@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource-variable/unbounded": "^5.0.19",
     "@fontsource/roboto": "^5.0.12",
+    "@fontsource/syncopate": "^5.0.18",
     "@mui/icons-material": "^5.15.13",
     "@mui/material": "^5.15.13",
     "@rainbow-me/rainbowkit": "^2.0.2",
