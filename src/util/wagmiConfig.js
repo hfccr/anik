@@ -3,7 +3,7 @@ import { http, createConfig } from "wagmi";
 import { filecoinCalibration } from "wagmi/chains";
 
 const ipc1 = {
-  id: 3253503959941322,
+  id: 1521432628168185,
   name: "IPC1",
   nativeCurrency: {
     name: "subnet filecoin",

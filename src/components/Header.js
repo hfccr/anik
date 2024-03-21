@@ -17,20 +17,16 @@ import Connect from "./Connect";
 
 const pages = [
   {
-    title: "DA",
-    href: "/dapp/da",
+    title: "Data Availability",
+    href: "/dapp/availability",
   },
   {
-    title: "Archive",
-    href: "/dapp/client",
+    title: "Danksharding",
+    href: "/dapp/danksharding",
   },
   {
-    title: "SP",
-    href: "/dapp/provider",
-  },
-  {
-    title: "Govern",
-    href: "/dapp/govern",
+    title: "Layer 1",
+    href: "/dapp/layer1",
   },
 ];
 
@@ -165,7 +161,8 @@ export default function Header() {
                   <Button
                     onClick={handleCloseNavMenu}
                     color="inherit"
-                    sx={{ my: 2, display: "block", mx: 0 }}
+                    sx={{ my: 4, display: "block", mx: 2 }}
+                    size="medium"
                   >
                     {page.title}
                   </Button>

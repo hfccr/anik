@@ -10,6 +10,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 import "./globals.css";
 import { config } from "@/util/wagmiConfig";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { Container } from "@mui/material";
 
 const queryClient = new QueryClient();
 
@@ -21,9 +22,11 @@ export default function RootLayout({ children }) {
           <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
               <RainbowKitProvider>
-                <Toaster />
-                <Header />
-                {children}
+                <Container sx={{ minHeight: "100vh" }}>
+                  <Toaster />
+                  <Header />
+                  {children}
+                </Container>
               </RainbowKitProvider>
             </QueryClientProvider>
           </WagmiProvider>
