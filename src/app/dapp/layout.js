@@ -15,7 +15,7 @@ export default function DappLayout({ children }) {
   const wrongChain = chain === undefined;
   const promptSwitch = isConnected && wrongChain;
   return (
-    <Container sx={{ marginTop: 12 }} maxWidth="sm">
+    <Container sx={{ marginTop: 0 }} maxWidth="md">
       {!isConnected && hydrated && (
         <Stack
           direction="column"
@@ -38,9 +38,9 @@ export default function DappLayout({ children }) {
         </Stack>
       )}
       {!hydrated && (
-        <Container>
-          <Stack spacing={1}>
-            <Skeleton height={100} />
+        <Container maxWidth="md">
+          <Stack spacing={0}>
+            <Skeleton height={50} />
             <Skeleton height={400} />
           </Stack>
         </Container>

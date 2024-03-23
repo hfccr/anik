@@ -17,16 +17,12 @@ import Connect from "./Connect";
 
 const pages = [
   {
-    title: "Data Availability",
-    href: "/dapp/availability",
+    title: "Restake",
+    href: "/dapp/restake",
   },
   {
-    title: "Danksharding",
-    href: "/dapp/danksharding",
-  },
-  {
-    title: "Layer 1",
-    href: "/dapp/layer1",
+    title: "Stats",
+    href: "/dapp/stats",
   },
 ];
 
@@ -47,6 +43,8 @@ export default function Header() {
         color="inherit"
         sx={{
           padding: 1,
+          backdropFilter: "blur(8px)",
+          backgroundColor: theme.palette.background.default,
         }}
       >
         <Container maxWidth="xl">
@@ -56,7 +54,6 @@ export default function Header() {
                 <Typography
                   variant="h1"
                   component="div"
-                  color="primary"
                   sx={{
                     cursor: "pointer",
                     fontFamily: "Syncopate, sans-serif",
@@ -68,7 +65,6 @@ export default function Header() {
                 <Typography
                   variant="h3"
                   component="div"
-                  color="primary"
                   sx={{
                     cursor: "pointer",
                     fontFamily: "Syncopate, sans-serif",
@@ -162,7 +158,7 @@ export default function Header() {
                     onClick={handleCloseNavMenu}
                     color="inherit"
                     sx={{ my: 4, display: "block", mx: 2 }}
-                    size="medium"
+                    size="large"
                   >
                     {page.title}
                   </Button>
@@ -177,7 +173,13 @@ export default function Header() {
               }}
             >
               <ToggleColorMode />
-              <Connect />
+              <Box
+                sx={{
+                  minWidth: { xs: "auto", md: "auto", lg: "445px" },
+                }}
+              >
+                <Connect />
+              </Box>
             </Box>
           </Toolbar>
         </Container>
