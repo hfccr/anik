@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Container, Divider, Stack, Typography } from "@mui/material";
-import { Protocols } from "./Protocols";
+import { Strategies } from "./Strategies";
 
 export default function Layer1() {
   return (
@@ -9,7 +9,7 @@ export default function Layer1() {
       <Stack spacing={2}>
         <Typography variant="h3">Restake</Typography>
         <Divider />
-        <Protocols />
+        <Strategies />
       </Stack>
     </Container>
   );

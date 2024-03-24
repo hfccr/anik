@@ -1,5 +1,3 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import { Stack, Typography } from "@mui/material";
 
 export default function Home() {
@@ -8,6 +6,10 @@ export default function Home() {
       <Typography variant="h2">
         Provide Cryptoeconomic Security To IPC Subnets With Restaking
       </Typography>
+      <Typography variant="h2">
+        Shared Security For Interplanetary Subnets
+      </Typography>
+      <Typography>Allows IPC devs to increase trust in their subnet</Typography>
     </Stack>
   );
 }
