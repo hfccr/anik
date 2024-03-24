@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
           <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
               <RainbowKitProvider>
-                <Container sx={{ minHeight: "100vh" }}>
+                <Container>
                   <Toaster />
                   <Header />
                   {children}

@@ -1,3 +1,7 @@
+body > .MuiPaper-root.MuiPaper-elevation {
+  min-height: 100vh;
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
