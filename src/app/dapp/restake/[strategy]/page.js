@@ -41,16 +41,27 @@ export default function RestakeStrategy({ params }) {
           </Avatar>
           <Typography variant="h2">{title}</Typography>
           <Box sx={{ flexGrow: 1, textAlign: "right" }}>
-            <Chip label={ticker} sx={{}} />
+            <Chip label={ticker} size="large" />
           </Box>
         </Stack>
         <Divider />
         <Stack direction={{ md: "column", lg: "row" }} spacing={4}>
-          <Stack direction="column" spacing={4} sx={{ minWidth: 600 }}>
+          <Stack
+            direction="column"
+            spacing={4}
+            sx={{ width: { md: "100%", lg: "60%" } }}
+          >
             <RestakedCard ticker={ticker} />
             <StrategyTabs sx={{ width: "100%" }} />
           </Stack>
-          <Stack direction="column" spacing={4}>
+          <Stack
+            direction="column"
+            spacing={4}
+            sx={{
+              width: { md: "100%", lg: "40%" },
+              marginTop: { sm: 4, xs: 4 },
+            }}
+          >
             <ViewLST address={address} sx={{ width: "100%" }} />
             <Paper variant="outlined" component="div">
               <Stack spacing={2} sx={{ padding: 2 }}>
