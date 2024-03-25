@@ -1,9 +1,9 @@
 "use client";
 import {
   Avatar,
-  Button,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
@@ -18,20 +18,17 @@ export const Strategies = () => {
   const items = strategies.map((strategy) => {
     const { key, title, ticker, logo } = strategy;
     return (
-      <ListItem
-        key={key}
-        secondaryAction={
-          <Link href={`${pathname}/${key}`}>
-            <Button>Restake</Button>
-          </Link>
-        }
-      >
-        <ListItemIcon>
-          <Avatar sx={{ height: 36, width: 36 }}>
-            <Image src={logo} width={36} height={36} alt={ticker} />
-          </Avatar>
-        </ListItemIcon>
-        <ListItemText primary={title} secondary={ticker} />
+      <ListItem key={key}>
+        <Link href={`${pathname}/${key}`}>
+          <ListItemButton sx={{ marginRight: "auto" }}>
+            <ListItemIcon>
+              <Avatar sx={{ height: 36, width: 36 }}>
+                <Image src={logo} width={36} height={36} alt={ticker} />
+              </Avatar>
+            </ListItemIcon>
+            <ListItemText primary={title} secondary={ticker} />
+          </ListItemButton>
+        </Link>
       </ListItem>
     );
   });

@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import { Deposit } from "./Deposit";
 import { Unstake } from "./Unstake";
 import { useState } from "react";
-import { Container, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,13 +49,13 @@ export const StrategyTabs = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Box>
       <Paper variant="outlined" sx={{ overflow: "hidden" }} component="div">
-        <AppBar position="static">
+        <AppBar position="static" color="background">
           <Tabs
             value={value}
             onChange={handleChange}
-            indicatorColor="secondary"
+            indicatorColor="primary"
             textColor="inherit"
             variant="fullWidth"
             aria-label="restaking stake unstake"
@@ -71,6 +71,6 @@ export const StrategyTabs = () => {
           <Unstake />
         </TabPanel>
       </Paper>
-    </Container>
+    </Box>
   );
 };

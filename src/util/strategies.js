@@ -23,7 +23,7 @@ export const strategies = [
     logo: "/collectif-dao.webp",
     about:
       "Collectif DAO is a non-custodial liquid staking protocol built on the Filecoin network. It enables users to stake their FIL and receive clFIL (Collective Filecoin) tokens in return. Staked FIL is allocated to storage providers who use it to expand their mining operations, while clFIL can be utilized in the DeFi ecosystems of Filecoin and Ethereum.",
-    address: "",
+    address: "0x19AAB7dD96E9EedF9E232fE56d1736f53205834a",
   },
   {
     key: "repl",

@@ -9,7 +9,7 @@ export const Unstake = () => {
           <TextField label="Enter Amount" type="number" sx={{ flexGrow: 1 }} />
           <Button>Max</Button>
         </Stack>
-        <Button variant="contained">Unstake</Button>
+        <Button variant="outlined">Unstake</Button>
       </Stack>
     </Container>
   );

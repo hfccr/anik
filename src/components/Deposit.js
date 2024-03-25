@@ -9,7 +9,7 @@ export const Deposit = () => {
           <TextField label="Enter Amount" type="number" sx={{ flexGrow: 1 }} />
           <Button>Max</Button>
         </Stack>
-        <Button variant="contained">Deposit</Button>
+        <Button variant="outlined">Deposit</Button>
       </Stack>
     </Container>
   );

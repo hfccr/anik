@@ -15,7 +15,7 @@ export default function DappLayout({ children }) {
   const wrongChain = chain === undefined;
   const promptSwitch = isConnected && wrongChain;
   return (
-    <Container sx={{ marginTop: 0 }} maxWidth="md">
+    <Container sx={{ marginTop: 0 }} maxWidth="lg">
       {!isConnected && hydrated && (
         <Stack
           direction="column"
