@@ -54,6 +54,6 @@ export const strategies = [
   },
 ];
 
-export const getStragegy = (key) => {
+export const getStrategy = (key) => {
   return strategies.find((strategy) => strategy.key === key);
 };

@@ -1,9 +1,10 @@
 "use client";
 
-import { getStragegy } from "@/util/strategies";
+import { getStrategy } from "@/util/strategies";
 import {
   Avatar,
   Box,
+  Breadcrumbs,
   Chip,
   Container,
   Divider,
@@ -15,13 +16,20 @@ import Image from "next/image";
 import { StrategyTabs } from "@/components/StrategyTabs";
 import { RestakedCard } from "@/components/RestakedCard";
 import { ViewLST } from "@/components/ViewLST";
+import Link from "next/link";
 
 export default function RestakeStrategy({ params }) {
   const selectedStrategy = params.strategy;
-  const { title, ticker, logo, about, address } = getStragegy(selectedStrategy);
+  const { key, title, ticker, logo, about, address } =
+    getStrategy(selectedStrategy);
   return (
     <Container maxWidth="lg">
       <Stack spacing={4}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link href="/">Home</Link>
+          <Link href="/dapp/restake">Restake</Link>
+          <Link href={`dapp/restake/${key}`}>{title}</Link>
+        </Breadcrumbs>
         <Stack
           spacing={2}
           direction="row"
