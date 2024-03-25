@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import Connect from "./Connect";
+import { usePathname } from "next/navigation";
 
 const pages = [
   {
@@ -31,6 +32,10 @@ const pages = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+  const selectedIndex = pages.findIndex(
+    (page) => pathname.indexOf(page.href) >= 0
+  );
   const [anchorElNav, setAnchorElNav] = useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -156,13 +161,14 @@ export default function Header() {
                 },
               }}
             >
-              {pages.map((page) => (
+              {pages.map((page, pageIndex) => (
                 <Link key={page.href} href={page.href} legacyBehavior>
                   <Button
                     onClick={handleCloseNavMenu}
                     color="inherit"
                     sx={{ my: 4, display: "block", mx: 2 }}
                     size="large"
+                    variant={selectedIndex === pageIndex ? "outlined" : "text"}
                   >
                     {page.title}
                   </Button>
