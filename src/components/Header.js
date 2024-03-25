@@ -24,6 +24,10 @@ const pages = [
     title: "Stats",
     href: "/dapp/stats",
   },
+  {
+    title: "Operators",
+    href: "/dapp/operators",
+  },
 ];
 
 export default function Header() {
