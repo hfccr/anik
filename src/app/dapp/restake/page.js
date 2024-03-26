@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import { Strategies } from "@/components/Strategies";
-import { Mint } from "@/components/Mint";
 import Link from "next/link";
 
 export default function Restake() {
@@ -21,7 +20,6 @@ export default function Restake() {
         </Breadcrumbs>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="h3">Restake</Typography>
-          <Mint />
         </Stack>
         <Divider />
         <Strategies />

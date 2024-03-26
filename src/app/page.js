@@ -10,6 +10,10 @@ export default function Home() {
         Shared Security For Interplanetary Subnets
       </Typography>
       <Typography>Allows IPC devs to increase trust in their subnet</Typography>
+      <Typography>
+        Anik Is A FVM Native Trust Layer For Providing Security To IPC Subnets &
+        Other PL Native Applications
+      </Typography>
     </Stack>
   );
 }
