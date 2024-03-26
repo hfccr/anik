@@ -51,7 +51,7 @@ export default function RestakeStrategy({ params }) {
             spacing={4}
             sx={{ width: { md: "100%", lg: "60%" } }}
           >
-            <RestakedCard ticker={ticker} />
+            <RestakedCard ticker={ticker} address={address} />
             <StrategyTabs sx={{ width: "100%" }} />
           </Stack>
           <Stack
