@@ -25,7 +25,7 @@ export const ViewLST = ({ address }) => {
           >
             Explorer
           </Button>
-          <Mint />
+          <Mint address={address} />
         </Stack>
       </Stack>
     </Paper>
