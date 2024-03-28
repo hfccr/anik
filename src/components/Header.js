@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import Connect from "./Connect";
 import { usePathname } from "next/navigation";
+import { hexToRgb } from "../util/hexToRgb";
 
 const pages = [
   {
@@ -53,7 +54,7 @@ export default function Header() {
         sx={{
           padding: 1,
           backdropFilter: "blur(8px)",
-          backgroundColor: theme.palette.background.default,
+          backgroundColor: hexToRgb(theme.palette.background.default, 0.8),
         }}
       >
         <Container maxWidth="xl">
