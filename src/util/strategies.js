@@ -1,5 +1,14 @@
 export const strategies = [
   {
+    key: "wfil",
+    title: "Wrapped FIL",
+    ticker: "wFIL",
+    logo: "/filecoin.webp",
+    about:
+      "Wrapped FIL is the canonical wrapper token of the native Filecoin token. Wrapped FIL features a 1-to-1 ratio pegged to FIL.",
+    address: "0x2D0ffc1292287e4C1aCfC8B56aA126a44B2BCf3b",
+  },
+  {
     key: "glif",
     title: "GLIF Infinity Pool",
     ticker: "iFIL",
