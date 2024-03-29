@@ -16,6 +16,7 @@ import Link from "next/link";
 import Connect from "./Connect";
 import { usePathname } from "next/navigation";
 import { hexToRgb } from "../util/hexToRgb";
+import { motion } from "framer-motion";
 
 const pages = [
   {
@@ -164,15 +165,27 @@ export default function Header() {
             >
               {pages.map((page, pageIndex) => (
                 <Link key={page.href} href={page.href} legacyBehavior>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    color="inherit"
-                    sx={{ my: 4, display: "block", mx: 2 }}
-                    size="large"
-                    variant={selectedIndex === pageIndex ? "outlined" : "text"}
+                  <motion.div
+                    whileHover={{ scale: 1.2 }}
+                    transition={{
+                      type: "tween",
+                      stiffness: 400,
+                      damping: 10,
+                    }}
+                    whileTap={{ scale: 0.9 }}
                   >
-                    {page.title}
-                  </Button>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      color="inherit"
+                      sx={{ my: 4, display: "block", mx: 2 }}
+                      size="large"
+                      variant={
+                        selectedIndex === pageIndex ? "outlined" : "text"
+                      }
+                    >
+                      {page.title}
+                    </Button>
+                  </motion.div>
                 </Link>
               ))}
             </Box>
