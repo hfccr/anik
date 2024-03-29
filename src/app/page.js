@@ -1,9 +1,15 @@
-import { Stack, Typography } from "@mui/material";
+import { Box, Container, Divider, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <Stack direction="column" justifyContent="center" alignItems="center">
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={8}
+      sx={{ paddingBottom: 8 }}
+    >
       <Stack
         direction={{ md: "column", lg: "row" }}
         justifyContent="center"
@@ -21,17 +27,62 @@ export default function Home() {
           Filecoin Ecosystem Trust Layer
         </Typography>
       </Stack>
-      <Typography variant="h2">
-        Provide Cryptoeconomic Security To IPC Subnets With Restaking
-      </Typography>
-      <Typography variant="h2">
-        Shared Security For Interplanetary Subnets
-      </Typography>
-      <Typography>Allows IPC devs to increase trust in their subnet</Typography>
-      <Typography>
-        Anik Is A FVM Native Trust Layer For Providing Security To IPC Subnets &
-        Other PL Native Applications
-      </Typography>
+      <Box sx={{ width: "100%" }}>
+        <Divider>
+          <Typography variant="h2">Use Cases</Typography>
+        </Divider>
+      </Box>
+      <Container>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          direction={{ md: "column", lg: "row" }}
+          spacing={5}
+        >
+          <Image src="/tree.svg" alt="tree" width={400} height={400} />
+          <Stack spacing={4}>
+            <Typography variant="h2">IPC Subnet Security</Typography>
+            <Typography variant="h6">
+              Bootstrap trusted IPC subnets by delegation of Restaked LSTs to
+              Subnet Validators
+            </Typography>
+          </Stack>
+        </Stack>
+      </Container>
+      <Container>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          direction={{ md: "column", lg: "row-reverse" }}
+          spacing={5}
+        >
+          <Image src="/disks.svg" alt="disks" width={400} height={400} />
+          <Stack spacing={4}>
+            <Typography variant="h2">Storage Providers</Typography>
+            <Typography variant="h6">
+              Help manage Storage Provider capital by delegating LSTs for deal
+              collaterals
+            </Typography>
+          </Stack>
+        </Stack>
+      </Container>
+      <Container>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          direction={{ md: "column", lg: "row" }}
+          spacing={5}
+        >
+          <Image src="/fetch.svg" alt="fetch" width={400} height={400} />
+          <Stack spacing={4}>
+            <Typography variant="h2">Retrieval Protocols</Typography>
+            <Typography variant="h6">
+              Delegate to offchain retrieval attestors & storage providers to
+              secure the next generation of Retrieval Protocols
+            </Typography>
+          </Stack>
+        </Stack>
+      </Container>
     </Stack>
   );
 }
