@@ -29,6 +29,14 @@ export default function Home() {
       </Stack>
       <Box sx={{ width: "100%" }}>
         <Divider>
+          <Typography variant="h2">About</Typography>
+        </Divider>
+      </Box>
+      <Typography variant="h4" sx={{ textAlign: "center" }}>
+        Anik is a restaking layer focussed on securing the Filecoin Ecosystem
+      </Typography>
+      <Box sx={{ width: "100%" }}>
+        <Divider>
           <Typography variant="h2">Use Cases</Typography>
         </Divider>
       </Box>
