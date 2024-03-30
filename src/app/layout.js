@@ -6,6 +6,7 @@ import ColorModeHandler from "@/components/ColorModeHandler";
 import Header from "@/components/Header";
 import "@fontsource-variable/unbounded";
 import "@fontsource/syncopate";
+import "@fontsource/paytone-one";
 import "@rainbow-me/rainbowkit/styles.css";
 import "./globals.css";
 import { config } from "@/util/wagmiConfig";
