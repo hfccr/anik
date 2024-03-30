@@ -17,7 +17,7 @@ export default function Stats() {
           <Link href="/">Home</Link>
           <Link href="/dapp/stats">Stats</Link>
         </Breadcrumbs>
-        <Typography variant="h3">Stats</Typography>
+        <Typography variant="h2">Stats</Typography>
         <Divider />
         <Typography>Show staking stats across all platforms</Typography>
       </Stack>

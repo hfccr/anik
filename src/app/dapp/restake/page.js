@@ -19,7 +19,7 @@ export default function Restake() {
           <Link href="/dapp/restake">Restake</Link>
         </Breadcrumbs>
         <Stack direction="row" justifyContent="space-between">
-          <Typography variant="h3">Restake</Typography>
+          <Typography variant="h2">Restake</Typography>
         </Stack>
         <Divider />
         <Strategies />

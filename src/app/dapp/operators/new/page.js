@@ -18,7 +18,7 @@ export default function Operators() {
           <Link href="/dapp/operators">Operators</Link>
           <Link href="/dapp/operators/new">Register Operator</Link>
         </Breadcrumbs>
-        <Typography variant="h3">Register Operator</Typography>
+        <Typography variant="h2">Register Operator</Typography>
         <Divider />
         <Typography>Register a new operator</Typography>
       </Stack>

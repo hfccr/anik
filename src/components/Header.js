@@ -94,6 +94,7 @@ export default function Header() {
                         alt="logo-image"
                         width={uptoMedium ? 32 : 72}
                         height={uptoMedium ? 32 : 72}
+                        priority
                       />
                     </Box>
                     <Box

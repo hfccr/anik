@@ -25,7 +25,7 @@ export default function Operators() {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="h3">Operators</Typography>
+          <Typography variant="h2">Operators</Typography>
           <Link href={`${pathname}/new`}>
             <Button variant="outlined" color="secondary">
               Register Operator

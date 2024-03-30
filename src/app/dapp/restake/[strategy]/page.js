@@ -66,6 +66,7 @@ export default function RestakeStrategy({ params }) {
             <Paper variant="outlined" component="div">
               <Stack spacing={2} sx={{ padding: 2 }}>
                 <Typography variant="h6">About {title}</Typography>
+                <Divider sx={{ width: "100%" }} />
                 <Typography>{about}</Typography>
               </Stack>
             </Paper>
