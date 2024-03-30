@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { useTheme } from "@mui/material";
+import { Stack, useMediaQuery, useTheme } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -46,6 +46,7 @@ export default function Header() {
     setAnchorElNav(null);
   };
   const theme = useTheme();
+  const uptoMedium = useMediaQuery(theme.breakpoints.down("lg"));
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -60,151 +61,166 @@ export default function Header() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Link href="/" legacyBehavior>
-              <Box>
-                <Typography
-                  variant="h1"
-                  component="div"
-                  sx={{
-                    cursor: "pointer",
-                    fontFamily: "Syncopate, sans-serif",
-                    display: { xs: "none", sm: "none", md: "none", lg: "flex" },
-                  }}
-                >
-                  anik
-                </Typography>
-                <Typography
-                  variant="h3"
-                  component="div"
-                  sx={{
-                    cursor: "pointer",
-                    fontFamily: "Syncopate, sans-serif",
-                    display: { xs: "none", md: "flex", lg: "none" },
-                  }}
-                >
-                  anik
-                </Typography>
-              </Box>
-            </Link>
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="app-menu"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
+            <Stack
+              direction={{ sm: "column", md: "row" }}
+              justifyContent="space-between"
+              alignItems="center"
+              sx={{ width: "100%" }}
+            >
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{ flexGrow: 1 }}
               >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                {pages.map((page) => (
-                  <Link key={page.href} href={page.href} legacyBehavior>
-                    <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page.title}</Typography>
-                    </MenuItem>
-                  </Link>
-                ))}
-              </Menu>
-            </Box>
-            <Typography
-              variant="h5"
-              noWrap
-              component="div"
-              color="primary"
-              sx={{
-                fontFamily: "Syncopate",
-                display: { xs: "none", sm: "flex", md: "none" },
-                mr: 2,
-                flexGrow: 1,
-              }}
-            >
-              anik
-            </Typography>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              color="primary"
-              sx={{
-                fontFamily: "Syncopate",
-                display: { xs: "flex", sm: "none" },
-                mr: 1,
-                flexGrow: 1,
-              }}
-            >
-              anik
-            </Typography>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: {
-                  xs: "none",
-                  md: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                },
-              }}
-            >
-              {pages.map((page, pageIndex) => (
-                <Link key={page.href} href={page.href} legacyBehavior>
-                  <motion.div
-                    whileHover={{ scale: 1.2 }}
-                    transition={{
-                      type: "tween",
-                      stiffness: 400,
-                      damping: 10,
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      color="inherit"
-                      sx={{ my: 4, display: "block", mx: 2 }}
-                      size="large"
-                      variant={
-                        selectedIndex === pageIndex ? "outlined" : "text"
-                      }
+                <Link href="/" legacyBehavior>
+                  <Box>
+                    <Typography
+                      variant="h1"
+                      component="div"
+                      sx={{
+                        cursor: "pointer",
+                        display: {
+                          xs: "none",
+                          sm: "none",
+                          md: "none",
+                          lg: "flex",
+                        },
+                      }}
                     >
-                      {page.title}
-                    </Button>
-                  </motion.div>
+                      anik
+                    </Typography>
+                    <Typography
+                      variant="h3"
+                      component="div"
+                      sx={{
+                        cursor: "pointer",
+                        display: { xs: "none", md: "flex", lg: "none" },
+                      }}
+                    >
+                      anik
+                    </Typography>
+                  </Box>
                 </Link>
-              ))}
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-              }}
-            >
-              <ToggleColorMode />
+                <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="app-menu"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleOpenNavMenu}
+                    color="inherit"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "left",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                      display: { xs: "block", md: "none" },
+                    }}
+                  >
+                    {pages.map((page) => (
+                      <Link key={page.href} href={page.href} legacyBehavior>
+                        <MenuItem onClick={handleCloseNavMenu}>
+                          <Typography textAlign="center">
+                            {page.title}
+                          </Typography>
+                        </MenuItem>
+                      </Link>
+                    ))}
+                  </Menu>
+                </Box>
+                <Typography
+                  variant="h4"
+                  noWrap
+                  component="div"
+                  sx={{
+                    display: { xs: "none", sm: "flex", md: "none" },
+                    mr: 2,
+                    flexGrow: 1,
+                  }}
+                >
+                  anik
+                </Typography>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{
+                    display: { xs: "flex", sm: "none" },
+                    mr: 1,
+                    flexGrow: 1,
+                  }}
+                >
+                  anik
+                </Typography>
+                <Box
+                  sx={{
+                    flexGrow: 1,
+                    display: {
+                      xs: "none",
+                      md: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    },
+                  }}
+                >
+                  {pages.map((page, pageIndex) => (
+                    <Link key={page.href} href={page.href} legacyBehavior>
+                      <motion.div
+                        whileHover={{ scale: 1.2 }}
+                        transition={{
+                          type: "tween",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Button
+                          onClick={handleCloseNavMenu}
+                          color="inherit"
+                          sx={{ my: 4, display: "block", mx: { md: 0, lg: 2 } }}
+                          size={uptoMedium ? "small" : "large"}
+                          variant={
+                            selectedIndex === pageIndex ? "outlined" : "text"
+                          }
+                        >
+                          {page.title}
+                        </Button>
+                      </motion.div>
+                    </Link>
+                  ))}
+                </Box>
+              </Stack>
               <Box
                 sx={{
-                  minWidth: { xs: "auto", md: "auto", lg: "445px" },
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
                 }}
               >
-                <Connect />
+                <ToggleColorMode />
+                <Box
+                  sx={{
+                    minWidth: { xs: "auto", md: "auto", lg: "445px" },
+                  }}
+                >
+                  <Connect />
+                </Box>
               </Box>
-            </Box>
+            </Stack>
           </Toolbar>
         </Container>
       </AppBar>
