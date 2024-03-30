@@ -17,6 +17,7 @@ import Connect from "./Connect";
 import { usePathname } from "next/navigation";
 import { hexToRgb } from "../util/hexToRgb";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const pages = [
   {
@@ -38,6 +39,7 @@ export default function Header() {
   const selectedIndex = pages.findIndex(
     (page) => pathname.indexOf(page.href) >= 0
   );
+  const isHome = pathname === "/";
   const [anchorElNav, setAnchorElNav] = useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -74,33 +76,58 @@ export default function Header() {
                 sx={{ flexGrow: 1 }}
               >
                 <Link href="/" legacyBehavior>
-                  <Box>
-                    <Typography
-                      variant="h1"
-                      component="div"
+                  <Stack direction="row" alignItems="center" spacing={2}>
+                    <Box
                       sx={{
-                        cursor: "pointer",
                         display: {
                           xs: "none",
                           sm: "none",
                           md: "none",
-                          lg: "flex",
+                          lg: "block",
                         },
-                      }}
-                    >
-                      anik
-                    </Typography>
-                    <Typography
-                      variant="h3"
-                      component="div"
-                      sx={{
+                        paddingTop: 2,
                         cursor: "pointer",
-                        display: { xs: "none", md: "flex", lg: "none" },
                       }}
                     >
-                      anik
-                    </Typography>
-                  </Box>
+                      <Image
+                        src="/twist.svg"
+                        alt="logo-image"
+                        width={uptoMedium ? 32 : 72}
+                        height={uptoMedium ? 32 : 72}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        visibility: !isHome ? "hidden" : "visible",
+                      }}
+                    >
+                      <Typography
+                        variant="h1"
+                        component="div"
+                        sx={{
+                          cursor: "pointer",
+                          display: {
+                            xs: "none",
+                            sm: "none",
+                            md: "none",
+                            lg: "flex",
+                          },
+                        }}
+                      >
+                        anik
+                      </Typography>
+                      <Typography
+                        variant="h3"
+                        component="div"
+                        sx={{
+                          cursor: "pointer",
+                          display: { xs: "none", md: "flex", lg: "none" },
+                        }}
+                      >
+                        anik
+                      </Typography>
+                    </Box>
+                  </Stack>
                 </Link>
                 <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                   <IconButton

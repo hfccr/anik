@@ -32,9 +32,23 @@ export default function Home() {
           <Typography variant="h2">About</Typography>
         </Divider>
       </Box>
-      <Typography variant="h4" sx={{ textAlign: "center" }}>
-        Anik is a restaking layer focussed on securing the Filecoin Ecosystem
-      </Typography>
+      <Container>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          direction={{ md: "column", lg: "row" }}
+          spacing={5}
+        >
+          <Image src="/tusk.svg" alt="tusk" width={400} height={400} />
+          <Stack spacing={4}>
+            <Typography variant="h2">Restaking For Filecoin</Typography>
+            <Typography variant="h6">
+              Anik is a restaking layer focussed on securing the Filecoin
+              Ecosystem
+            </Typography>
+          </Stack>
+        </Stack>
+      </Container>
       <Box sx={{ width: "100%" }}>
         <Divider>
           <Typography variant="h2">Use Cases</Typography>
