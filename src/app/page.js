@@ -43,8 +43,8 @@ export default function Home() {
           <Stack spacing={4}>
             <Typography variant="h2">Restaking For Filecoin</Typography>
             <Typography variant="h6">
-              Anik is a restaking layer focussed on securing the Filecoin
-              Ecosystem
+              Anik is a restaking layer focussed on providing cryptoeconomic
+              trust to participants in the Filecoin Ecosystem
             </Typography>
           </Stack>
         </Stack>
@@ -61,7 +61,13 @@ export default function Home() {
           direction={{ md: "column", lg: "row" }}
           spacing={5}
         >
-          <Image src="/tree.svg" alt="tree" width={400} height={400} />
+          <Image
+            src="/tree.svg"
+            alt="tree"
+            width={400}
+            height={400}
+            style={{ opacity: 0.4 }}
+          />
           <Stack spacing={4}>
             <Typography variant="h2">IPC Subnet Security</Typography>
             <Typography variant="h6">
@@ -78,7 +84,13 @@ export default function Home() {
           direction={{ md: "column", lg: "row-reverse" }}
           spacing={5}
         >
-          <Image src="/disks.svg" alt="disks" width={400} height={400} />
+          <Image
+            src="/disks.svg"
+            alt="disks"
+            width={400}
+            height={400}
+            style={{ opacity: 0.6 }}
+          />
           <Stack spacing={4}>
             <Typography variant="h2">Storage Providers</Typography>
             <Typography variant="h6">
@@ -95,7 +107,13 @@ export default function Home() {
           direction={{ md: "column", lg: "row" }}
           spacing={5}
         >
-          <Image src="/fetch.svg" alt="fetch" width={400} height={400} />
+          <Image
+            src="/fetch.svg"
+            alt="fetch"
+            width={400}
+            height={400}
+            style={{ opacity: 0.6 }}
+          />
           <Stack spacing={4}>
             <Typography variant="h2">Retrieval Protocols</Typography>
             <Typography variant="h6">
