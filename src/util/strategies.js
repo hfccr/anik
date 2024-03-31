@@ -7,7 +7,7 @@ export const strategies = [
     about:
       "Wrapped FIL is the canonical wrapper token of the native Filecoin token. Wrapped FIL features a 1-to-1 ratio pegged to FIL.",
     address: "0x2D0ffc1292287e4C1aCfC8B56aA126a44B2BCf3b",
-    strategyAddress: "0xAb944c1F14739c4C5Afffae00A3A61BB397c0e87",
+    strategyAddress: "0x33442C377C778Af3beC4bd846fe45D2eE153e93C",
   },
   {
     key: "glif",
@@ -16,7 +16,7 @@ export const strategies = [
     logo: "/glif.webp",
     about: "Filecoin's premier DeFi protocol for lending/borrowing FIL.",
     address: "0xb1310985d8D8a42f6667E8d811f332CDC33449F4",
-    strategyAddress: "0x37b2Ab8b5551f0A75bD06F0B5aF76BFcb6673599",
+    strategyAddress: "0x3f2442CC468d34Bb9024E786F1cDAb0D2b72eEc7",
   },
   {
     key: "stfil",
