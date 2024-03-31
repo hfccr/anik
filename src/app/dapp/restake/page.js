@@ -4,6 +4,7 @@ import {
   Breadcrumbs,
   Container,
   Divider,
+  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -22,7 +23,9 @@ export default function Restake() {
           <Typography variant="h2">Restake</Typography>
         </Stack>
         <Divider />
-        <Strategies />
+        <Paper elevation={0} variant="outlined">
+          <Strategies />
+        </Paper>
       </Stack>
     </Container>
   );
