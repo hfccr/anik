@@ -7,12 +7,15 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { lstABI } from "@/util/strategies";
+import { lstABI, strategyABI } from "@/util/strategies";
 import { useAccount, useReadContract } from "wagmi";
 
-export const RestakedCard = ({ ticker, address: contractAddress }) => {
+export const RestakedCard = ({
+  ticker,
+  address: contractAddress,
+  strategyAddress,
+}) => {
   const { address } = useAccount();
-  const restakedDollarValue = "$0";
   const {
     isError,
     isLoading,
@@ -22,6 +25,12 @@ export const RestakedCard = ({ ticker, address: contractAddress }) => {
     abi: lstABI,
     address: contractAddress,
     functionName: "balanceOf",
+    args: [address],
+  });
+  const { isSuccess: isStrategySuccess, data: shares } = useReadContract({
+    abi: strategyABI,
+    address: strategyAddress,
+    functionName: "shares",
     args: [address],
   });
   return (
@@ -35,7 +44,10 @@ export const RestakedCard = ({ ticker, address: contractAddress }) => {
             alignItems="center"
           >
             <Stack>
-              <Typography variant="h2">{restakedDollarValue}</Typography>
+              {!isStrategySuccess && <Skeleton width={80} />}
+              {isStrategySuccess && (
+                <Typography variant="h2">{shares.toString()}</Typography>
+              )}
               <Typography variant="h6">Restaked</Typography>
             </Stack>
             <Chip label={`${lstBalance} ${ticker}`} />

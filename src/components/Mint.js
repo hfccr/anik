@@ -7,7 +7,6 @@ import { useWriteContract } from "wagmi";
 export const Mint = ({ address: contractAddress }) => {
   const { writeContract, isPending } = useWriteContract();
   const mint = () => {
-    console.log("Writing Contract...", contractAddress, " mint");
     writeContract({
       abi: lstABI,
       address: contractAddress,

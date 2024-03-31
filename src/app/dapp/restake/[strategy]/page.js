@@ -20,7 +20,7 @@ import Link from "next/link";
 
 export default function RestakeStrategy({ params }) {
   const selectedStrategy = params.strategy;
-  const { key, title, ticker, logo, about, address } =
+  const { key, title, ticker, logo, about, address, strategyAddress } =
     getStrategy(selectedStrategy);
   return (
     <Container maxWidth="lg">
@@ -51,8 +51,17 @@ export default function RestakeStrategy({ params }) {
             spacing={4}
             sx={{ width: { md: "100%", lg: "60%" } }}
           >
-            <RestakedCard ticker={ticker} address={address} />
-            <StrategyTabs sx={{ width: "100%" }} />
+            <RestakedCard
+              ticker={ticker}
+              address={address}
+              strategyAddress={strategyAddress}
+            />
+            <StrategyTabs
+              sx={{ width: "100%" }}
+              address={address}
+              strategyAddress={strategyAddress}
+              ticker={ticker}
+            />
           </Stack>
           <Stack
             direction="column"
