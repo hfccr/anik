@@ -1,410 +1,384 @@
 export const strategyManager = {
-  address: "0xE6e5b7383C2be2dc6Cdc449a355f069b10F0e508",
+  address: "0x37b2Ab8b5551f0A75bD06F0B5aF76BFcb6673599",
   abi: [
     {
+      inputs: [],
+      stateMutability: "nonpayable",
       type: "constructor",
-      inputs: [],
-      stateMutability: "nonpayable",
     },
     {
-      type: "function",
-      name: "addShares",
       inputs: [
         {
-          name: "staker",
-          type: "address",
           internalType: "address",
-        },
-        {
-          name: "token",
-          type: "address",
-          internalType: "contract IERC20",
-        },
-        {
-          name: "strategy",
-          type: "address",
-          internalType: "contract IStrategy",
-        },
-        {
-          name: "shares",
-          type: "uint256",
-          internalType: "uint256",
-        },
-      ],
-      outputs: [],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "function",
-      name: "addStrategiesToDepositWhitelist",
-      inputs: [
-        {
-          name: "strategiesToWhitelist",
-          type: "address[]",
-          internalType: "contract IStrategy[]",
-        },
-      ],
-      outputs: [],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "function",
-      name: "delegation",
-      inputs: [],
-      outputs: [
-        {
-          name: "",
-          type: "address",
-          internalType: "contract DelegationManager",
-        },
-      ],
-      stateMutability: "view",
-    },
-    {
-      type: "function",
-      name: "depositIntoStrategy",
-      inputs: [
-        {
-          name: "strategy",
-          type: "address",
-          internalType: "contract IStrategy",
-        },
-        {
-          name: "token",
-          type: "address",
-          internalType: "contract IERC20",
-        },
-        {
-          name: "amount",
-          type: "uint256",
-          internalType: "uint256",
-        },
-      ],
-      outputs: [
-        {
-          name: "shares",
-          type: "uint256",
-          internalType: "uint256",
-        },
-      ],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "function",
-      name: "getDeposits",
-      inputs: [
-        {
-          name: "staker",
-          type: "address",
-          internalType: "address",
-        },
-      ],
-      outputs: [
-        {
-          name: "",
-          type: "address[]",
-          internalType: "contract IStrategy[]",
-        },
-        {
-          name: "",
-          type: "uint256[]",
-          internalType: "uint256[]",
-        },
-      ],
-      stateMutability: "view",
-    },
-    {
-      type: "function",
-      name: "owner",
-      inputs: [],
-      outputs: [
-        {
-          name: "",
-          type: "address",
-          internalType: "address",
-        },
-      ],
-      stateMutability: "view",
-    },
-    {
-      type: "function",
-      name: "removeShares",
-      inputs: [
-        {
-          name: "staker",
-          type: "address",
-          internalType: "address",
-        },
-        {
-          name: "strategy",
-          type: "address",
-          internalType: "contract IStrategy",
-        },
-        {
-          name: "shares",
-          type: "uint256",
-          internalType: "uint256",
-        },
-      ],
-      outputs: [],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "function",
-      name: "renounceOwnership",
-      inputs: [],
-      outputs: [],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "function",
-      name: "setDelegationManager",
-      inputs: [
-        {
-          name: "_delegation",
-          type: "address",
-          internalType: "contract DelegationManager",
-        },
-      ],
-      outputs: [],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "function",
-      name: "setSlasher",
-      inputs: [
-        {
-          name: "_slasher",
-          type: "address",
-          internalType: "contract Slasher",
-        },
-      ],
-      outputs: [],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "function",
-      name: "slasher",
-      inputs: [],
-      outputs: [
-        {
-          name: "",
-          type: "address",
-          internalType: "contract Slasher",
-        },
-      ],
-      stateMutability: "view",
-    },
-    {
-      type: "function",
-      name: "stakerStrategyList",
-      inputs: [
-        {
-          name: "",
-          type: "address",
-          internalType: "address",
-        },
-        {
-          name: "",
-          type: "uint256",
-          internalType: "uint256",
-        },
-      ],
-      outputs: [
-        {
-          name: "",
-          type: "address",
-          internalType: "contract IStrategy",
-        },
-      ],
-      stateMutability: "view",
-    },
-    {
-      type: "function",
-      name: "stakerStrategyListLength",
-      inputs: [
-        {
-          name: "staker",
-          type: "address",
-          internalType: "address",
-        },
-      ],
-      outputs: [
-        {
-          name: "",
-          type: "uint256",
-          internalType: "uint256",
-        },
-      ],
-      stateMutability: "view",
-    },
-    {
-      type: "function",
-      name: "stakerStrategyShares",
-      inputs: [
-        {
-          name: "",
-          type: "address",
-          internalType: "address",
-        },
-        {
-          name: "",
-          type: "address",
-          internalType: "contract IStrategy",
-        },
-      ],
-      outputs: [
-        {
-          name: "",
-          type: "uint256",
-          internalType: "uint256",
-        },
-      ],
-      stateMutability: "view",
-    },
-    {
-      type: "function",
-      name: "strategyIsWhitelistedForDeposit",
-      inputs: [
-        {
-          name: "",
-          type: "address",
-          internalType: "contract IStrategy",
-        },
-      ],
-      outputs: [
-        {
-          name: "",
-          type: "bool",
-          internalType: "bool",
-        },
-      ],
-      stateMutability: "view",
-    },
-    {
-      type: "function",
-      name: "transferOwnership",
-      inputs: [
-        {
-          name: "newOwner",
-          type: "address",
-          internalType: "address",
-        },
-      ],
-      outputs: [],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "function",
-      name: "withdrawSharesAsTokens",
-      inputs: [
-        {
-          name: "recepient",
-          type: "address",
-          internalType: "address",
-        },
-        {
-          name: "strategy",
-          type: "address",
-          internalType: "contract IStrategy",
-        },
-        {
-          name: "shares",
-          type: "uint256",
-          internalType: "uint256",
-        },
-        {
-          name: "token",
-          type: "address",
-          internalType: "contract IERC20",
-        },
-      ],
-      outputs: [],
-      stateMutability: "nonpayable",
-    },
-    {
-      type: "event",
-      name: "OwnershipTransferred",
-      inputs: [
-        {
-          name: "previousOwner",
-          type: "address",
-          indexed: true,
-          internalType: "address",
-        },
-        {
-          name: "newOwner",
-          type: "address",
-          indexed: true,
-          internalType: "address",
-        },
-      ],
-      anonymous: false,
-    },
-    {
-      type: "error",
-      name: "AddressEmptyCode",
-      inputs: [
-        {
           name: "target",
           type: "address",
-          internalType: "address",
         },
       ],
+      name: "AddressEmptyCode",
+      type: "error",
     },
     {
-      type: "error",
+      inputs: [
+        {
+          internalType: "address",
+          name: "account",
+          type: "address",
+        },
+      ],
       name: "AddressInsufficientBalance",
+      type: "error",
+    },
+    {
       inputs: [
         {
-          name: "account",
-          type: "address",
           internalType: "address",
-        },
-      ],
-    },
-    {
-      type: "error",
-      name: "FailedInnerCall",
-      inputs: [],
-    },
-    {
-      type: "error",
-      name: "OwnableInvalidOwner",
-      inputs: [
-        {
-          name: "owner",
+          name: "staker",
           type: "address",
-          internalType: "address",
         },
-      ],
-    },
-    {
-      type: "error",
-      name: "OwnableUnauthorizedAccount",
-      inputs: [
         {
-          name: "account",
-          type: "address",
-          internalType: "address",
-        },
-      ],
-    },
-    {
-      type: "error",
-      name: "ReentrancyGuardReentrantCall",
-      inputs: [],
-    },
-    {
-      type: "error",
-      name: "SafeERC20FailedOperation",
-      inputs: [
-        {
+          internalType: "contract IERC20",
           name: "token",
           type: "address",
-          internalType: "address",
+        },
+        {
+          internalType: "contract IStrategy",
+          name: "strategy",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "shares",
+          type: "uint256",
         },
       ],
+      name: "addShares",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "contract IStrategy[]",
+          name: "strategiesToWhitelist",
+          type: "address[]",
+        },
+      ],
+      name: "addStrategiesToDepositWhitelist",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "contract IStrategy",
+          name: "strategy",
+          type: "address",
+        },
+        {
+          internalType: "contract IERC20",
+          name: "token",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "amount",
+          type: "uint256",
+        },
+      ],
+      name: "depositIntoStrategy",
+      outputs: [
+        {
+          internalType: "uint256",
+          name: "shares",
+          type: "uint256",
+        },
+      ],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "FailedInnerCall",
+      type: "error",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "owner",
+          type: "address",
+        },
+      ],
+      name: "OwnableInvalidOwner",
+      type: "error",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "account",
+          type: "address",
+        },
+      ],
+      name: "OwnableUnauthorizedAccount",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "ReentrancyGuardReentrantCall",
+      type: "error",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "token",
+          type: "address",
+        },
+      ],
+      name: "SafeERC20FailedOperation",
+      type: "error",
+    },
+    {
+      anonymous: false,
+      inputs: [
+        {
+          indexed: true,
+          internalType: "address",
+          name: "previousOwner",
+          type: "address",
+        },
+        {
+          indexed: true,
+          internalType: "address",
+          name: "newOwner",
+          type: "address",
+        },
+      ],
+      name: "OwnershipTransferred",
+      type: "event",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "staker",
+          type: "address",
+        },
+        {
+          internalType: "contract IStrategy",
+          name: "strategy",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "shares",
+          type: "uint256",
+        },
+      ],
+      name: "removeShares",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "renounceOwnership",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "contract DelegationManager",
+          name: "_delegation",
+          type: "address",
+        },
+      ],
+      name: "setDelegationManager",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "newOwner",
+          type: "address",
+        },
+      ],
+      name: "transferOwnership",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "recepient",
+          type: "address",
+        },
+        {
+          internalType: "contract IStrategy",
+          name: "strategy",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "shares",
+          type: "uint256",
+        },
+        {
+          internalType: "contract IERC20",
+          name: "token",
+          type: "address",
+        },
+      ],
+      name: "withdrawSharesAsTokens",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "delegation",
+      outputs: [
+        {
+          internalType: "contract DelegationManager",
+          name: "",
+          type: "address",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "staker",
+          type: "address",
+        },
+      ],
+      name: "getDeposits",
+      outputs: [
+        {
+          internalType: "contract IStrategy[]",
+          name: "",
+          type: "address[]",
+        },
+        {
+          internalType: "uint256[]",
+          name: "",
+          type: "uint256[]",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "owner",
+      outputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
+      name: "stakerStrategyList",
+      outputs: [
+        {
+          internalType: "contract IStrategy",
+          name: "",
+          type: "address",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "staker",
+          type: "address",
+        },
+      ],
+      name: "stakerStrategyListLength",
+      outputs: [
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
+        {
+          internalType: "contract IStrategy",
+          name: "",
+          type: "address",
+        },
+      ],
+      name: "stakerStrategyShares",
+      outputs: [
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "contract IStrategy",
+          name: "",
+          type: "address",
+        },
+      ],
+      name: "strategyIsWhitelistedForDeposit",
+      outputs: [
+        {
+          internalType: "bool",
+          name: "",
+          type: "bool",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
     },
   ],
 };
