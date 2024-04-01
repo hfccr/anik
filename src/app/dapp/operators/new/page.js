@@ -1,5 +1,7 @@
 "use client";
+import React from "react";
 import {
+  Box,
   Breadcrumbs,
   Container,
   Divider,
@@ -7,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
-import React from "react";
+import { OperatorRegistration } from "@/components/OperatorRegistration";
 
 export default function Operators() {
   return (
@@ -20,7 +22,9 @@ export default function Operators() {
         </Breadcrumbs>
         <Typography variant="h2">Register Operator</Typography>
         <Divider />
-        <Typography>Register a new operator</Typography>
+        <Box sx={{ marginTop: 2 }}>
+          <OperatorRegistration />
+        </Box>
       </Stack>
     </Container>
   );

@@ -17,7 +17,6 @@ export const Operators = () => {
     functionName: "getAllOperators",
     args: [],
   });
-  console.log(operators);
   return (
     <>
       {isFetching && <Skeleton height={400} />}

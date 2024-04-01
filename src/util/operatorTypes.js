@@ -1,7 +1,7 @@
 const OPERATOR_TYPES = {
   0: { name: "IPC", logo: "/ipc.png" },
-  1: { name: "MINER", logo: "/ipc.png" },
-  2: { name: "RETRIEVAL", logo: "/ipc.png" },
+  1: { name: "MINER", logo: "/disk.svg" },
+  2: { name: "RETRIEVAL", logo: "/fetch.svg" },
 };
 
 export const getName = (type) => {
