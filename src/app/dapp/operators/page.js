@@ -10,8 +10,9 @@ import {
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
+import { Operators } from "@/components/Operators";
 
-export default function Operators() {
+export default function OperatorsPage() {
   const pathname = usePathname();
   return (
     <Container>
@@ -33,7 +34,7 @@ export default function Operators() {
           </Link>
         </Stack>
         <Divider />
-        <Typography>View and register operators</Typography>
+        <Operators />
       </Stack>
     </Container>
   );
