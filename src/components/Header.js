@@ -89,13 +89,30 @@ export default function Header() {
                         cursor: "pointer",
                       }}
                     >
-                      <Image
-                        src="/twist.svg"
-                        alt="logo-image"
-                        width={uptoMedium ? 32 : 72}
-                        height={uptoMedium ? 32 : 72}
-                        priority
-                      />
+                      <motion.div
+                        className="container"
+                        whileHover={{ scale: 1.2, rotate: 20 }}
+                        whileTap={{
+                          scale: 0.8,
+                          rotate: -40,
+                          borderRadius: "100%",
+                        }}
+                        initial={{ scale: 0.4 }}
+                        animate={{ rotate: 0, scale: 1 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 260,
+                          damping: 20,
+                        }}
+                      >
+                        <Image
+                          src="/twist.svg"
+                          alt="logo-image"
+                          width={uptoMedium ? 32 : 72}
+                          height={uptoMedium ? 32 : 72}
+                          priority
+                        />
+                      </motion.div>
                     </Box>
                     <Box
                       sx={{
