@@ -10,6 +10,7 @@ import { getName, getLogo } from "@/util/operatorTypes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import truncateEthAddress from "truncate-eth-address";
 
 export const OperatorList = ({ operators, isDelegated, delegatedTo }) => {
   const pathname = usePathname();
@@ -44,7 +45,12 @@ export const OperatorList = ({ operators, isDelegated, delegatedTo }) => {
                 alt={getName(operatorType)}
               />
             </ListItemIcon>
-            <ListItemText primary={name} secondary={operatorAddress} />
+            <ListItemText
+              primary={name}
+              secondary={truncateEthAddress(operatorAddress)}
+              primaryTypographyProps={{ variant: "h6" }}
+              secondaryTypographyProps={{ variant: "body1" }}
+            />
           </ListItemButton>
         </Link>
       </ListItem>
