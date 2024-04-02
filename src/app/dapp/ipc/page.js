@@ -9,17 +9,17 @@ import {
 import Link from "next/link";
 import React from "react";
 
-export default function Stats() {
+export default function Ipc() {
   return (
     <Container>
       <Stack spacing={2}>
         <Breadcrumbs aria-label="breadcrumb">
           <Link href="/">Home</Link>
-          <Link href="/dapp/stats">Stats</Link>
+          <Link href="/dapp/ipc">IPC</Link>
         </Breadcrumbs>
-        <Typography variant="h2">Stats</Typography>
+        <Typography variant="h2">IPC</Typography>
         <Divider />
-        <Typography>Show staking stats across all platforms</Typography>
+        <Typography>Show IPC operators and allow slashing with GMP</Typography>
       </Stack>
     </Container>
   );

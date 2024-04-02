@@ -25,12 +25,12 @@ const pages = [
     href: "/dapp/restake",
   },
   {
-    title: "Stats",
-    href: "/dapp/stats",
-  },
-  {
     title: "Operators",
     href: "/dapp/operators",
+  },
+  {
+    title: "IPC",
+    href: "/dapp/ipc",
   },
 ];
 
