@@ -1,11 +1,12 @@
 "use client";
 
-import { useReadContract } from "wagmi";
+import { useAccount, useReadContract } from "wagmi";
 import { delegationManager } from "@/util/delegationManager";
-import { Alert, Skeleton } from "@mui/material";
+import { Alert, Container, LinearProgress, Skeleton } from "@mui/material";
 import { OperatorList } from "@/components/OperatorList";
 
 export const Operators = () => {
+  const { address } = useAccount();
   const {
     isSuccess,
     isError,
@@ -17,15 +18,32 @@ export const Operators = () => {
     functionName: "getAllOperators",
     args: [],
   });
+  const { data: isDelegated } = useReadContract({
+    abi: delegationManager.abi,
+    address: delegationManager.address,
+    functionName: "isDelegated",
+    args: [address],
+  });
+  const { data: delegatedTo } = useReadContract({
+    abi: delegationManager.abi,
+    address: delegationManager.address,
+    functionName: "delegatedTo",
+    args: [address],
+  });
   return (
     <>
-      {isFetching && <Skeleton height={400} />}
+      {!isSuccess && isFetching && <Skeleton height={400} />}
+      {isSuccess && isFetching && <LinearProgress />}
       {isError && <Alert severity="error">Failed to fetch operators</Alert>}
       {isSuccess && operators.length === 0 && (
         <Alert severity="info">No operators registered yet</Alert>
       )}
       {isSuccess && operators.length > 0 && (
-        <OperatorList operators={operators} />
+        <OperatorList
+          operators={operators}
+          isDelegated={isDelegated}
+          delegatedTo={delegatedTo}
+        />
       )}
     </>
   );

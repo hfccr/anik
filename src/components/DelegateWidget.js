@@ -11,6 +11,7 @@ import { DelegateButton } from "./DelegateButton";
 import { getRisk } from "@/util/operatorTypes";
 import { useAccount, useReadContract } from "wagmi";
 import { delegationManager } from "@/util/delegationManager";
+import { Shares } from "./Shares";
 
 export const DelegateWidget = ({ operatorAddress, operatorType }) => {
   const { address } = useAccount();
@@ -24,26 +25,32 @@ export const DelegateWidget = ({ operatorAddress, operatorType }) => {
     functionName: "isDelegated",
     args: [address],
   });
-  const { isSuccess: delegatedToSuccess, data: delegatedTo } = useReadContract({
+  const { data: delegatedTo } = useReadContract({
     abi: delegationManager.abi,
     address: delegationManager.address,
     functionName: "delegatedTo",
     args: [address],
   });
   const isSame = delegatedTo === operatorAddress;
-  let delegatedToLabel = "You are already delegated";
+  let delegatedToLabel = "You are already delegated to other operator";
   if (isSame) {
     delegatedToLabel = "You are already delegated to this operator";
   }
   return (
     <>
-      {isDelegatedFetching && <Skeleton height={200} />}
+      {!isDelegatedSuccess && isDelegatedFetching && <Skeleton height={200} />}
       {isDelegatedSuccess && isDelegated && (
         <Paper variant="outlined">
           <Stack direction="column" spacing={2} sx={{ padding: 4 }}>
             <Typography variant="h4">Delegated</Typography>
             <Divider />
             <Alert severity="success">{delegatedToLabel}</Alert>
+            {isSame && (
+              <Shares
+                operatorAddress={operatorAddress}
+                operatorType={operatorType}
+              />
+            )}
           </Stack>
         </Paper>
       )}

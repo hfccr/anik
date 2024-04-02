@@ -69,6 +69,12 @@ export const getStrategy = (key) => {
   return strategies.find((strategy) => strategy.key === key);
 };
 
+export const getStrategyByStrategyAddress = (strategyAddress) => {
+  return strategies.find(
+    (strategy) => strategy.strategyAddress === strategyAddress
+  );
+};
+
 export const lstABI = [
   {
     inputs: [

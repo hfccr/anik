@@ -11,19 +11,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export const OperatorList = ({ operators }) => {
+export const OperatorList = ({ operators, isDelegated, delegatedTo }) => {
   const pathname = usePathname();
   const items = operators.map((operator) => {
     const { operatorAddress, name, operatorType, slashes } = operator;
+    const isDelegatedToOperator = operatorAddress === delegatedTo;
     return (
       <ListItem
         key={operatorAddress}
         secondaryAction={
           <>
-            {slashes > 0 && (
+            {isDelegatedToOperator && (
               <Chip
-                label={`${slashes} Slashes`}
+                label={`Delegated`}
                 sx={{ position: "relative", right: 40 }}
+                color="success"
               />
             )}
           </>

@@ -3,8 +3,6 @@ import { delegationManager } from "@/util/delegationManager";
 import { getLogo, getName, getRisk, getService } from "@/util/operatorTypes";
 import {
   Alert,
-  Box,
-  Chip,
   Container,
   Divider,
   Paper,
@@ -30,11 +28,10 @@ export const OperatorView = ({ operatorAddress }) => {
     functionName: "operatorDetails",
     args: [operatorAddress],
   });
-  console.log(operatorDetails);
   const operatorType = operatorDetails?.operatorType;
   return (
     <Container maxWidth="lg">
-      {isFetching && <Skeleton height={400} />}
+      {!isSuccess && isFetching && <Skeleton height={400} />}
       {isError && (
         <Alert severity="error">Failed to check operator status</Alert>
       )}
