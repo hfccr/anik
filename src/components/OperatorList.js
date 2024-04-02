@@ -5,6 +5,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Paper,
 } from "@mui/material";
 import { getName, getLogo } from "@/util/operatorTypes";
 import Image from "next/image";
@@ -56,5 +57,9 @@ export const OperatorList = ({ operators, isDelegated, delegatedTo }) => {
       </ListItem>
     );
   });
-  return <List>{items}</List>;
+  return (
+    <Paper variant="outlined" sx={{ padding: 1, paddingLeft: 3 }}>
+      <List>{items}</List>
+    </Paper>
+  );
 };
