@@ -9,7 +9,7 @@ const DELEGATION_APPROVER = strategyManager.address;
 const OPT_OUT_BLOCKS = 5;
 const SLASHES = 0;
 
-export const RegisterOperatorButton = ({ name, operatorType }) => {
+export const RegisterOperatorButton = ({ name, operatorType, minerId }) => {
   const { address } = useAccount();
   const { writeContract } = useWriteContract();
   const disabled = name.length === 0 || name.length > 32;
@@ -27,6 +27,7 @@ export const RegisterOperatorButton = ({ name, operatorType }) => {
           name,
           operatorType,
           0,
+          minerId,
         ],
       ],
     });

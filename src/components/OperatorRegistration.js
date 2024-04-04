@@ -18,6 +18,7 @@ import { RegisterOperatorButton } from "./RegisterOperatorButton";
 export const OperatorRegistration = () => {
   const [name, setName] = useState("");
   const [operatorType, setOperatorType] = useState(0);
+  const [minerId, setMinerId] = useState(0);
   const { address } = useAccount();
   const {
     isError,
@@ -37,10 +38,14 @@ export const OperatorRegistration = () => {
   const onTypeChange = (event) => {
     setOperatorType(event.target.value);
   };
+  const onMinerIdChange = (event) => {
+    setMinerId(event.target.value);
+  };
+  const useMinerId = operatorType === 1;
   return (
     <Stack justifyContent="center" alignItems="center" sx={{ marginTop: 4 }}>
       <Container maxWidth="sm">
-        {isFetching && <Skeleton height={400} />}
+        {!isSuccess && isFetching && <Skeleton height={400} />}
         {isError && (
           <Alert severity="error">Failed to check operator status</Alert>
         )}
@@ -66,6 +71,15 @@ export const OperatorRegistration = () => {
                 type="number"
                 disabled
               />
+              {operatorDetails.minerId && (
+                <TextField
+                  label="Miner ID"
+                  name="minerId"
+                  value={operatorDetails.minerId.toString()}
+                  type="number"
+                  disabled
+                />
+              )}
               <Alert severity="info">
                 You are already registered as an{" "}
                 {getName(operatorDetails.operatorType)} operator
@@ -93,7 +107,20 @@ export const OperatorRegistration = () => {
                 <MenuItem value={1}>Storage Provider</MenuItem>
                 <MenuItem value={3}>Retrieval Attestor</MenuItem>
               </TextField>
-              <RegisterOperatorButton name={name} operatorType={operatorType} />
+              {useMinerId && (
+                <TextField
+                  label="Miner ID"
+                  name="minerId"
+                  value={minerId}
+                  onChange={onMinerIdChange}
+                  required
+                />
+              )}
+              <RegisterOperatorButton
+                name={name}
+                operatorType={operatorType}
+                minerId={useMinerId ? minerId : 0}
+              />
               <Alert severity="info">
                 An operator will be registered with your wallet address
               </Alert>

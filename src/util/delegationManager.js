@@ -1,5 +1,5 @@
 export const delegationManager = {
-  address: "0x9736129822885B652825246eEb067647dafed4CC",
+  address: "0x4A30D2e8c8c74fa6CEa9418e63a653e2A034cC50",
   abi: [
     {
       inputs: [
@@ -205,6 +205,11 @@ export const delegationManager = {
               name: "slashes",
               type: "uint256",
             },
+            {
+              internalType: "uint64",
+              name: "minerId",
+              type: "uint64",
+            },
           ],
           internalType: "struct DelegationManager.OperatorDetails[]",
           name: "",
@@ -362,6 +367,11 @@ export const delegationManager = {
               name: "slashes",
               type: "uint256",
             },
+            {
+              internalType: "uint64",
+              name: "minerId",
+              type: "uint64",
+            },
           ],
           internalType: "struct DelegationManager.OperatorDetails",
           name: "newOperatorDetails",
@@ -419,6 +429,11 @@ export const delegationManager = {
               internalType: "uint256",
               name: "slashes",
               type: "uint256",
+            },
+            {
+              internalType: "uint64",
+              name: "minerId",
+              type: "uint64",
             },
           ],
           internalType: "struct DelegationManager.OperatorDetails",
@@ -523,6 +538,11 @@ export const delegationManager = {
               internalType: "uint256",
               name: "slashes",
               type: "uint256",
+            },
+            {
+              internalType: "uint64",
+              name: "minerId",
+              type: "uint64",
             },
           ],
           internalType: "struct DelegationManager.OperatorDetails",
