@@ -84,7 +84,7 @@ export const OperatorView = ({ operatorAddress }) => {
             }}
           >
             <ViewLST
-              address={address}
+              address={operatorAddress}
               sx={{ width: "100%" }}
               node="Operator"
               mint={false}
