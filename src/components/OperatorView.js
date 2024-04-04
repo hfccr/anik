@@ -1,6 +1,11 @@
 "use client";
 import { delegationManager } from "@/util/delegationManager";
-import { getLogo, getName, getRisk, getService } from "@/util/operatorTypes";
+import {
+  getLogo,
+  getName,
+  getOperatorSpecificView,
+  getService,
+} from "@/util/operatorTypes";
 import {
   Alert,
   Container,
@@ -30,7 +35,7 @@ export const OperatorView = ({ operatorAddress }) => {
   });
   const operatorType = operatorDetails?.operatorType;
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ paddingBottom: 8 }}>
       {!isSuccess && isFetching && <Skeleton height={400} />}
       {isError && (
         <Alert severity="error">Failed to check operator status</Alert>
@@ -74,6 +79,7 @@ export const OperatorView = ({ operatorAddress }) => {
               operatorAddress={operatorAddress}
               operatorType={operatorType}
             />
+            {getOperatorSpecificView(operatorDetails)}
           </Stack>
           <Stack
             direction="column"

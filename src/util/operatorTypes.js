@@ -1,3 +1,5 @@
+import { MinerOperator } from "@/components/MinerOperator";
+
 const OPERATOR_TYPES = {
   0: {
     name: "IPC",
@@ -33,4 +35,8 @@ export const getRisk = (type) => {
 
 export const getService = (type) => {
   return OPERATOR_TYPES[type].service;
+};
+
+export const getOperatorSpecificView = (operatorDetails) => {
+  return <MinerOperator operatorDetails={operatorDetails} />;
 };
