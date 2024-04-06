@@ -51,6 +51,7 @@ export const MinerSlashButton = ({ deal, operatorDetails }) => {
         Slash
       </Button>
       <Dialog
+        fullScreen
         open={open}
         TransitionComponent={Transition}
         keepMounted

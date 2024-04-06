@@ -1,4 +1,5 @@
 import { MinerOperator } from "@/components/MinerOperator";
+import { IpcOperator } from "@/components/IpcOperator";
 
 const OPERATOR_TYPES = {
   0: {
@@ -38,5 +39,14 @@ export const getService = (type) => {
 };
 
 export const getOperatorSpecificView = (operatorDetails) => {
-  return <MinerOperator operatorDetails={operatorDetails} />;
+  const { operatorType } = operatorDetails;
+  if (operatorType === 0) {
+    return <IpcOperator operatorDetails={operatorDetails} />;
+  } else if (operatorType === 1) {
+    return <MinerOperator operatorDetails={operatorDetails} />;
+  } else if (operatorType === 2) {
+    return <></>;
+  } else {
+    return <></>;
+  }
 };
