@@ -20,11 +20,6 @@ export const useMinerDeals = (minerId) => {
         data: {},
       });
       try {
-        // const responseCount = await fetch(
-        //   `${URI}?address=t0${minerId}&pageSize=1&page=1`
-        // );
-        // const { totalCount: total } = await responseCount.json();
-        // const page = Math.max(Math.floor(total / MAX_DEALS) - 1, 1);
         const response = await fetch(
           `${URI}?address=t0${minerId}&pageSize=${MAX_DEALS}&page=${1}`
         );

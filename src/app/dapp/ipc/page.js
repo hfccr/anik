@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import { Subnets } from "@/components/Subnets";
 
 export default function Ipc() {
   return (
@@ -19,7 +20,7 @@ export default function Ipc() {
         </Breadcrumbs>
         <Typography variant="h2">IPC</Typography>
         <Divider />
-        <Typography>Show IPC operators and allow slashing with GMP</Typography>
+        <Subnets />
       </Stack>
     </Container>
   );

@@ -47,7 +47,7 @@ export const MAX_PROVIDER_BLOCKS = 1500;
 
 export const formatSubnetIdShort = (subnetId) => {
   const children = subnetId.route.map((c) =>
-    newDelegatedEthAddress(c).toString()
+    newDelegatedEthAddress(c).toString().replace(/^f/, "t")
   );
   return children.join("/");
 };
@@ -63,7 +63,7 @@ export const formatSubnetId = (subnetId) => {
 
 export const filAddr = (payload) => {
   const filAddr = "0x" + payload.slice(322, 322 + 40);
-  return newDelegatedEthAddress(filAddr).toString();
+  return newDelegatedEthAddress(filAddr).toString().replace(/^f/, "t");
 };
 
 export const ipcAddr = (subnetId, payload) => {
@@ -106,7 +106,9 @@ export const formatSubnets = (subnets) => {
       subnetIdShort: formatSubnetIdShort(s.id),
       subnetAddr: subnetContractAddr(s.id),
       collateral: formatFil(s.stake),
+      collateralRaw: s.stake,
       circulatingSupply: formatFil(s.circSupply),
+      circulatingSupplyRaw: s.circSupply,
       genesis: s.genesisEpoch,
     };
   });
