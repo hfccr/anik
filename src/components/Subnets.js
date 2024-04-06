@@ -82,6 +82,7 @@ export const Subnets = ({}) => {
                 alignItems="flex-start"
               >
                 <ListItemText primary={subnetId} />
+                <ListItemText secondary={`ETH Address : ${subnetAddr}`} />
                 <ListItemText secondary={`Collateral : ${collateral}`} />
                 <ListItemText
                   secondary={`Circulating Supply: ${circulatingSupply}`}
