@@ -76,7 +76,7 @@ export const IpcSlashButton = ({ operatorDetails }) => {
         onClose={handleClose}
         aria-describedby="slash-miner"
       >
-        <Stack direction="row" sx={{ padding: 2 }}>
+        <Stack direction="row" sx={{ padding: 2 }} spacing={2}>
           <IconButton size="large" onClick={handleClose}>
             <Close size="large" />
           </IconButton>
