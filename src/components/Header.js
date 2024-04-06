@@ -32,6 +32,10 @@ const pages = [
     title: "IPC",
     href: "/dapp/ipc",
   },
+  {
+    title: "SPs",
+    href: "/dapp/sps",
+  },
 ];
 
 export default function Header() {
