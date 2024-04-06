@@ -5,7 +5,7 @@ const OPERATOR_TYPES = {
   0: {
     name: "IPC",
     logo: "/ipc.png",
-    risk: "submits false block as an IPC validator",
+    risk: "does not follow Subnet Consensus rules as an IPC validator",
     service: "IPC Network",
   },
   1: {
