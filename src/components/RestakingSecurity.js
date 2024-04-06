@@ -1,25 +1,7 @@
-import {
-  Button,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-  Skeleton,
-} from "@mui/material";
-import { formatFil } from "../util/ipcConstants";
-import { useOperatorStaking } from "@/hooks/useOperatorStaking";
+import { Paper, Stack, Typography, Skeleton } from "@mui/material";
 
-export const RestakingSecurity = ({ subnets }) => {
+export const RestakingSecurity = ({ isSuccess, isFetching, ipcStaking }) => {
   const title = "Restaked";
-  let total = 0n;
-  subnets.forEach((subnet) => {
-    total += subnet.collateralRaw;
-  });
-  const { isSuccess, isFetching, data } = useOperatorStaking();
-  let ipcStaking = 0n;
-  if (isSuccess) {
-    ({ ipcStaking } = data);
-  }
   return (
     <Paper variant="outlined" sx={{ padding: 2 }}>
       <Stack spacing={2}>

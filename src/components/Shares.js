@@ -37,9 +37,7 @@ export const Shares = ({ operatorAddress, operatorType }) => {
             <Share
               key={delegatable.strategy.strategyAddress}
               strategy={delegatable.strategy}
-              operatorAddress={operatorAddress}
               delegatableShares={delegatable.shares}
-              operatorType={operatorType}
             />
           ))}
         </List>

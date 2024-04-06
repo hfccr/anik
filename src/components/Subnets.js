@@ -16,14 +16,28 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  Divider,
   Stack,
 } from "@mui/material";
 import { ViewLST } from "./ViewLST";
 import { SubnetCount } from "./SubnetCount";
 import { SubnetSecurity } from "./SubnetSecurity";
 import { RestakingSecurity } from "./RestakingSecurity";
+import { Share } from "./Share";
+import { getStrategy } from "@/util/strategies";
+import { useOperatorStaking } from "@/hooks/useOperatorStaking";
 
 export const Subnets = ({}) => {
+  const {
+    isSuccess: isOperatorStakingSuccess,
+    isFetching: isOperatorStakingFetching,
+    data: operatorStakingData,
+  } = useOperatorStaking();
+  let ipcStaking = 0n;
+  let subnetDelegation = {};
+  if (isOperatorStakingSuccess) {
+    ({ ipcStaking, subnetDelegation } = operatorStakingData);
+  }
   const { isFetching, isSuccess, isError, data, error } = useReadContract({
     abi: gatewayAbi,
     address: ROOT_GATEWAY_ADDRESS,
@@ -35,14 +49,52 @@ export const Subnets = ({}) => {
   if (isSuccess) {
     formattedSubnets = sortSubnets(formatSubnets(data));
     subnetList = formattedSubnets.map((subnet) => {
-      const { subnetId, genesis, collateral, circulatingSupply } = subnet;
+      const { subnetId, genesis, collateral, circulatingSupply, subnetAddr } =
+        subnet;
+      const delegation = subnetDelegation[subnetAddr];
+      let delegationView = <></>;
+      if (Array.isArray(delegation)) {
+        delegationView = delegation
+          .filter(({ delegatedShares }) => {
+            return delegatedShares > 0n;
+          })
+          .map(({ strategy, delegatedShares }) => {
+            return (
+              <Share
+                key={strategy.key}
+                strategy={strategy}
+                delegatableShares={delegatedShares}
+              />
+            );
+          });
+      }
       return (
-        <ListItem key={subnetId}>
-          <ListItemText
-            primary={subnetId}
-            secondary={`Collateral : ${collateral}`}
-          />
-        </ListItem>
+        <Box key={subnetId}>
+          <ListItem key={subnetId}>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              sx={{ width: "100%" }}
+            >
+              <Stack
+                direction="column"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+              >
+                <ListItemText primary={subnetId} />
+                <ListItemText secondary={`Collateral : ${collateral}`} />
+                <ListItemText
+                  secondary={`Circulating Supply: ${circulatingSupply}`}
+                />
+                <ListItemText
+                  secondary={`Genesis Epoch: ${genesis.toString()}`}
+                />
+              </Stack>
+              <Stack direction="column">{delegationView}</Stack>
+            </Stack>
+          </ListItem>
+          <Divider />
+        </Box>
       );
     });
   }
@@ -69,7 +121,11 @@ export const Subnets = ({}) => {
               />
               <SubnetCount subnets={formattedSubnets} />
               <SubnetSecurity subnets={formattedSubnets} />
-              <RestakingSecurity subnets={formattedSubnets} />
+              <RestakingSecurity
+                isFetching={isOperatorStakingFetching}
+                isSuccess={isOperatorStakingFetching}
+                ipcStaking={ipcStaking}
+              />
             </Stack>
             <Paper variant="outlined">
               <List sx={{ padding: 2 }}>{subnetList}</List>

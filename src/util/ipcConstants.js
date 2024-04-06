@@ -102,6 +102,7 @@ export const compareGenesis = (a, b) => {
 export const formatSubnets = (subnets) => {
   return subnets.map((s) => {
     return {
+      ...s,
       subnetId: formatSubnetId(s.id),
       subnetIdShort: formatSubnetIdShort(s.id),
       subnetAddr: subnetContractAddr(s.id),

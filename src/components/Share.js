@@ -1,15 +1,15 @@
 import { Avatar, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import Image from "next/image";
 
-export const Share = ({ strategy, operatorAddress, delegatableShares }) => {
+export const Share = ({ strategy, delegatableShares }) => {
   return (
-    <ListItem key={strategy.strategyAddress}>
+    <ListItem key={strategy.strategyAddress} component="div">
       <ListItemIcon>
-        <Avatar sx={{ height: 36, width: 36 }}>
+        <Avatar sx={{ height: 32, width: 32 }}>
           <Image
             src={strategy.logo}
-            width={36}
-            height={36}
+            width={32}
+            height={32}
             alt={strategy.title}
           />
         </Avatar>
