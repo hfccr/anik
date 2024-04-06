@@ -21,10 +21,14 @@ import toast from "react-hot-toast";
 import { useWriteContract } from "wagmi";
 import Image from "next/image";
 import { filAddressEthAddress } from "@/util/ipcConstants";
+import { ipcSlasherController } from "@/util/ipcSlasherController";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+// Will include proof of fault by operator/validator in the future
+const proof = 12345;
 
 export const IpcSlashButton = ({ operatorDetails }) => {
   const theme = useTheme();
@@ -45,12 +49,12 @@ export const IpcSlashButton = ({ operatorDetails }) => {
     setOpen((setOpen) => !setOpen);
   };
   const slashOperator = () => {
-    // writeContract({
-    //   abi: minerSlasher.abi,
-    //   address: minerSlasher.address,
-    //   functionName: "slash",
-    //   args: [operatorAddress, dealId],
-    // });
+    writeContract({
+      abi: ipcSlasherController.abi,
+      address: ipcSlasherController.address,
+      functionName: "slash",
+      args: [operatorAddress, proof],
+    });
     toast((t) => <Typography>Slashing IPC Operator</Typography>);
     handleClose();
   };
@@ -73,8 +77,8 @@ export const IpcSlashButton = ({ operatorDetails }) => {
         aria-describedby="slash-miner"
       >
         <Stack direction="row" sx={{ padding: 2 }}>
-          <IconButton size="large">
-            <Close size="large" onClick={handleClose} />
+          <IconButton size="large" onClick={handleClose}>
+            <Close size="large" />
           </IconButton>
           <Typography variant="h3">Slash Subnet Validator/Operator</Typography>
         </Stack>
