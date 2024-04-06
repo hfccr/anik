@@ -32,12 +32,10 @@ export const RestakingSecurity = ({ subnets }) => {
           sx={{ padding: 2 }}
         >
           {isFetching && <Skeleton height={20} />}
-          <Typography
-            variant="h6"
-            sx={{ paddingLeft: 1, paddingRight: 1, paddingTop: 2 }}
-          >
-            {ipcStaking.toString()} Tokens
+          <Typography variant="h4" sx={{ paddingLeft: 1, paddingRight: 1 }}>
+            {ipcStaking.toString()}
           </Typography>
+          <Typography>Tokens</Typography>
         </Stack>
       </Stack>
     </Paper>

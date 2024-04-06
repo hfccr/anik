@@ -18,9 +18,10 @@ export const SubnetSecurity = ({ subnets }) => {
           alignItems="center"
           sx={{ padding: 2 }}
         >
-          <Typography variant="h4" sx={{ padding: 2 }}>
-            {formatFil(total)}
+          <Typography variant="h4" sx={{ paddingLeft: 2, paddingRight: 2 }}>
+            {formatFil(total).replace(" FIL", "")}
           </Typography>
+          <Typography>FIL</Typography>
         </Stack>
       </Stack>
     </Paper>
