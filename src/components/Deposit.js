@@ -6,6 +6,8 @@ import {
   Stack,
   TextField,
   Typography,
+  Alert,
+  AlertTitle,
 } from "@mui/material";
 import { useState } from "react";
 import { lstABI } from "@/util/strategies";
@@ -72,7 +74,13 @@ export const Deposit = ({ address: contractAddress, strategyAddress }) => {
           </>
         )}
         {allowanceFetchSuccess && !hasMinAllowance && (
-          <Allowance address={contractAddress} />
+          <>
+            <Alert severity="info">
+              <AlertTitle>Allow Token Transfer Approval</AlertTitle>
+              Approval is required to allow transfers to strategy
+            </Alert>
+            <Allowance address={contractAddress} />
+          </>
         )}
       </Stack>
     </Container>
