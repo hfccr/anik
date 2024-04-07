@@ -18,10 +18,11 @@ import {
 import { Close } from "@mui/icons-material";
 import { useState, forwardRef } from "react";
 import toast from "react-hot-toast";
-import { useWriteContract } from "wagmi";
+import { useChainId, useWriteContract } from "wagmi";
 import Image from "next/image";
 import { filAddressEthAddress } from "@/util/ipcConstants";
 import { ipcSlasherController } from "@/util/ipcSlasherController";
+import { ipcSlasherReplica } from "@/util/ipcSlasherReplica";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -31,6 +32,7 @@ const Transition = forwardRef(function Transition(props, ref) {
 const proof = 12345;
 
 export const IpcSlashButton = ({ operatorDetails }) => {
+  const chainId = useChainId();
   const theme = useTheme();
   const imageSrc =
     theme.palette.mode === "dark"
@@ -49,13 +51,27 @@ export const IpcSlashButton = ({ operatorDetails }) => {
     setOpen((setOpen) => !setOpen);
   };
   const slashOperator = () => {
-    writeContract({
-      abi: ipcSlasherController.abi,
-      address: ipcSlasherController.address,
-      functionName: "slash",
-      args: [operatorAddress, proof],
-    });
-    toast((t) => <Typography>Slashing IPC Operator</Typography>);
+    if (chainId === 1123184071217486) {
+      // slash from subnet
+      writeContract({
+        abi: ipcSlasherReplica.abi,
+        address: ipcSlasherReplica.address,
+        functionName: "linkedTransfer",
+        args: [operatorAddress, proof],
+      });
+      toast((t) => (
+        <Typography>Slashing IPC Operator From L2 Subnet</Typography>
+      ));
+    } else {
+      // slash from calibration
+      writeContract({
+        abi: ipcSlasherController.abi,
+        address: ipcSlasherController.address,
+        functionName: "slash",
+        args: [operatorAddress, proof],
+      });
+      toast((t) => <Typography>Slashing IPC Operator</Typography>);
+    }
     handleClose();
   };
   return (
