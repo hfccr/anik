@@ -1102,6 +1102,7 @@ export function getThemedComponents(): ThemeOptions {
                 duration: theme.transitions.duration.shortest,
               }),
               ...(ownerState.variant === "outlined" && {
+                backgroundColor: `${alpha("#e6e6fa", 0.25)}`,
                 display: "block",
                 borderColor: (theme.vars || theme).palette.grey[100],
                 "&[href]": {
