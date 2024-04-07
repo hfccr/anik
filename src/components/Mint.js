@@ -11,7 +11,7 @@ export const Mint = ({ address: contractAddress }) => {
       abi: lstABI,
       address: contractAddress,
       functionName: "mint",
-      args: [10],
+      args: [100],
       onSuccess: () => {
         toast.success("Tokens Minted Successfully!");
       },
