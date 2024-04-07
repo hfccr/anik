@@ -6,11 +6,6 @@ const nextConfig = {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
-  output: "export",
-  trailingSlash: true,
-  images: {
-    unoptimized: true,
-  },
 };
 
 export default nextConfig;
