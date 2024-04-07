@@ -17,7 +17,7 @@ export default function Home() {
         direction={{ md: "column", lg: "row" }}
         justifyContent="center"
         alignItems="center"
-        sx={{ minHeight: "70vh", position: "relative" }}
+        sx={{ minHeight: "110vh", position: "relative" }}
       >
         <Image
           src="/flow-diagonal.svg"
