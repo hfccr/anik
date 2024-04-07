@@ -4,7 +4,7 @@ import { formatSize } from "@/util/formatSize";
 
 const MAX_DEALS = 500;
 
-export const Deals = ({ deals, operatorDetails }) => {
+export const Deals = ({ deals, operatorDetails, slash }) => {
   const { minerId } = operatorDetails;
   const noDeals = deals.length === 0;
   const dealList = deals.slice(0, MAX_DEALS).map((deal) => {
@@ -16,13 +16,12 @@ export const Deals = ({ deals, operatorDetails }) => {
     const dateRange = `${formatSize(
       pieceSize
     )} From ${startDateString} - ${endDateString}`;
+    const secondaryAction =
+      slash !== false ? (
+        <MinerSlashButton operatorDetails={operatorDetails} deal={deal} />
+      ) : null;
     return (
-      <ListItem
-        key={dealId}
-        secondaryAction={
-          <MinerSlashButton operatorDetails={operatorDetails} deal={deal} />
-        }
-      >
+      <ListItem component="div" key={dealId} secondaryAction={secondaryAction}>
         <ListItemText primary={dealId} secondary={dateRange} />
       </ListItem>
     );

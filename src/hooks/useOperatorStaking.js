@@ -32,6 +32,9 @@ export const useOperatorStaking = () => {
         let ipcStaking = 0n;
         let minerStaking = 0n;
         let subnetDelegation = {};
+        let minerDelegation = {};
+        let ipcOperatorCount = 0;
+        let minerOperatorCount = 0;
         for (let i = 0; i < data.length; i++) {
           const { operatorAddress, operatorType } = data[i];
           // TODO: Remove Subnet Mapping
@@ -59,8 +62,19 @@ export const useOperatorStaking = () => {
             });
           }
           if (operatorType === 0) {
+            ipcOperatorCount++;
             staking.forEach((staking) => (ipcStaking += staking));
           } else if (operatorType === 1) {
+            if (!Array.isArray(subnetDelegation[subnetAddress])) {
+              minerDelegation[operatorAddress] = applicableStrategies.map(
+                (strategy) => ({ strategy, delegatedShares: 0n })
+              );
+            }
+            staking.forEach((staking, index) => {
+              minerDelegation[operatorAddress][index].delegatedShares +=
+                staking;
+            });
+            minerOperatorCount++;
             staking.forEach((staking) => (minerStaking += staking));
           }
           staking.forEach((staking) => (totalStaking += staking));
@@ -77,6 +91,9 @@ export const useOperatorStaking = () => {
             minerStaking,
             applicableStrategies,
             subnetDelegation,
+            ipcOperatorCount,
+            minerOperatorCount,
+            minerDelegation,
           },
         });
       } catch (e) {
