@@ -1,5 +1,5 @@
-export const ipcSlasherController = {
-  address: "0x44b9FE73A2FC99Df85f365D4AC08111a6eb52EAC",
+export const ipcSlasherReplica = {
+  address: "0x31C231AcCBa071d53253Afaf9c8d239254f64D17",
   abi: [
     {
       inputs: [
@@ -7,6 +7,23 @@ export const ipcSlasherController = {
           internalType: "address",
           name: "gateway",
           type: "address",
+        },
+        {
+          components: [
+            {
+              internalType: "uint64",
+              name: "root",
+              type: "uint64",
+            },
+            {
+              internalType: "address[]",
+              name: "route",
+              type: "address[]",
+            },
+          ],
+          internalType: "struct SubnetID",
+          name: "linkedSubnet",
+          type: "tuple",
         },
       ],
       stateMutability: "nonpayable",
@@ -26,6 +43,16 @@ export const ipcSlasherController = {
         },
       ],
       name: "InvalidEnvelope",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "InvalidOriginContract",
+      type: "error",
+    },
+    {
+      inputs: [],
+      name: "InvalidOriginSubnet",
       type: "error",
     },
     {
@@ -86,24 +113,36 @@ export const ipcSlasherController = {
           type: "address",
         },
         {
+          indexed: true,
+          internalType: "address",
+          name: "sender",
+          type: "address",
+        },
+        {
+          indexed: false,
+          internalType: "bytes32",
+          name: "id",
+          type: "bytes32",
+        },
+        {
+          indexed: false,
+          internalType: "uint64",
+          name: "nonce",
+          type: "uint64",
+        },
+        {
           indexed: false,
           internalType: "uint256",
           name: "proof",
           type: "uint256",
         },
       ],
-      name: "LinkedSlashReceived",
+      name: "LinkedSlashSent",
       type: "event",
     },
     {
       anonymous: false,
       inputs: [
-        {
-          indexed: true,
-          internalType: "address",
-          name: "underlying",
-          type: "address",
-        },
         {
           components: [
             {
@@ -129,69 +168,7 @@ export const ipcSlasherController = {
           type: "address",
         },
       ],
-      name: "LinkedTokenInitialized",
-      type: "event",
-    },
-    {
-      anonymous: false,
-      inputs: [
-        {
-          indexed: true,
-          internalType: "address",
-          name: "underlying",
-          type: "address",
-        },
-        {
-          indexed: true,
-          internalType: "address",
-          name: "sender",
-          type: "address",
-        },
-        {
-          indexed: true,
-          internalType: "address",
-          name: "recipient",
-          type: "address",
-        },
-        {
-          indexed: false,
-          internalType: "bytes32",
-          name: "id",
-          type: "bytes32",
-        },
-        {
-          indexed: false,
-          internalType: "uint64",
-          name: "nonce",
-          type: "uint64",
-        },
-        {
-          indexed: false,
-          internalType: "uint256",
-          name: "value",
-          type: "uint256",
-        },
-      ],
-      name: "LinkedTokensSent",
-      type: "event",
-    },
-    {
-      anonymous: false,
-      inputs: [
-        {
-          indexed: true,
-          internalType: "address",
-          name: "operator",
-          type: "address",
-        },
-        {
-          indexed: false,
-          internalType: "uint256",
-          name: "proof",
-          type: "uint256",
-        },
-      ],
-      name: "OperatorSlashed",
+      name: "LinkedSlasherInitialized",
       type: "event",
     },
     {
@@ -212,6 +189,32 @@ export const ipcSlasherController = {
       ],
       name: "OwnershipTransferred",
       type: "event",
+    },
+    {
+      inputs: [],
+      name: "_linkedContract",
+      outputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [],
+      name: "_linkedSubnet",
+      outputs: [
+        {
+          internalType: "uint64",
+          name: "root",
+          type: "uint64",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
     },
     {
       inputs: [
@@ -352,19 +355,6 @@ export const ipcSlasherController = {
       name: "_validateEnvelope",
       outputs: [],
       stateMutability: "nonpayable",
-      type: "function",
-    },
-    {
-      inputs: [],
-      name: "delegation",
-      outputs: [
-        {
-          internalType: "contract DelegationManager",
-          name: "",
-          type: "address",
-        },
-      ],
-      stateMutability: "view",
       type: "function",
     },
     {
@@ -657,6 +647,134 @@ export const ipcSlasherController = {
       type: "function",
     },
     {
+      inputs: [
+        {
+          internalType: "address",
+          name: "operator",
+          type: "address",
+        },
+        {
+          internalType: "uint256",
+          name: "proof",
+          type: "uint256",
+        },
+      ],
+      name: "linkedTransfer",
+      outputs: [
+        {
+          components: [
+            {
+              internalType: "enum IpcMsgKind",
+              name: "kind",
+              type: "uint8",
+            },
+            {
+              components: [
+                {
+                  components: [
+                    {
+                      internalType: "uint64",
+                      name: "root",
+                      type: "uint64",
+                    },
+                    {
+                      internalType: "address[]",
+                      name: "route",
+                      type: "address[]",
+                    },
+                  ],
+                  internalType: "struct SubnetID",
+                  name: "subnetId",
+                  type: "tuple",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint8",
+                      name: "addrType",
+                      type: "uint8",
+                    },
+                    {
+                      internalType: "bytes",
+                      name: "payload",
+                      type: "bytes",
+                    },
+                  ],
+                  internalType: "struct FvmAddress",
+                  name: "rawAddress",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct IPCAddress",
+              name: "to",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  components: [
+                    {
+                      internalType: "uint64",
+                      name: "root",
+                      type: "uint64",
+                    },
+                    {
+                      internalType: "address[]",
+                      name: "route",
+                      type: "address[]",
+                    },
+                  ],
+                  internalType: "struct SubnetID",
+                  name: "subnetId",
+                  type: "tuple",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint8",
+                      name: "addrType",
+                      type: "uint8",
+                    },
+                    {
+                      internalType: "bytes",
+                      name: "payload",
+                      type: "bytes",
+                    },
+                  ],
+                  internalType: "struct FvmAddress",
+                  name: "rawAddress",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct IPCAddress",
+              name: "from",
+              type: "tuple",
+            },
+            {
+              internalType: "uint64",
+              name: "nonce",
+              type: "uint64",
+            },
+            {
+              internalType: "uint256",
+              name: "value",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "message",
+              type: "bytes",
+            },
+          ],
+          internalType: "struct IpcEnvelope",
+          name: "committed",
+          type: "tuple",
+        },
+      ],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
       inputs: [],
       name: "owner",
       outputs: [
@@ -692,12 +810,25 @@ export const ipcSlasherController = {
     {
       inputs: [
         {
-          internalType: "contract DelegationManager",
-          name: "_delegation",
+          internalType: "address",
+          name: "linkedContract",
           type: "address",
         },
       ],
-      name: "setDelegationManager",
+      name: "setLinkedSubnet",
+      outputs: [],
+      stateMutability: "nonpayable",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "newOwner",
+          type: "address",
+        },
+      ],
+      name: "transferOwnership",
       outputs: [],
       stateMutability: "nonpayable",
       type: "function",
@@ -715,21 +846,118 @@ export const ipcSlasherController = {
           type: "uint256",
         },
       ],
-      name: "slash",
-      outputs: [],
-      stateMutability: "nonpayable",
-      type: "function",
-    },
-    {
-      inputs: [
+      name: "transferSlashWithReturn",
+      outputs: [
         {
-          internalType: "address",
-          name: "newOwner",
-          type: "address",
+          components: [
+            {
+              internalType: "enum IpcMsgKind",
+              name: "kind",
+              type: "uint8",
+            },
+            {
+              components: [
+                {
+                  components: [
+                    {
+                      internalType: "uint64",
+                      name: "root",
+                      type: "uint64",
+                    },
+                    {
+                      internalType: "address[]",
+                      name: "route",
+                      type: "address[]",
+                    },
+                  ],
+                  internalType: "struct SubnetID",
+                  name: "subnetId",
+                  type: "tuple",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint8",
+                      name: "addrType",
+                      type: "uint8",
+                    },
+                    {
+                      internalType: "bytes",
+                      name: "payload",
+                      type: "bytes",
+                    },
+                  ],
+                  internalType: "struct FvmAddress",
+                  name: "rawAddress",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct IPCAddress",
+              name: "to",
+              type: "tuple",
+            },
+            {
+              components: [
+                {
+                  components: [
+                    {
+                      internalType: "uint64",
+                      name: "root",
+                      type: "uint64",
+                    },
+                    {
+                      internalType: "address[]",
+                      name: "route",
+                      type: "address[]",
+                    },
+                  ],
+                  internalType: "struct SubnetID",
+                  name: "subnetId",
+                  type: "tuple",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint8",
+                      name: "addrType",
+                      type: "uint8",
+                    },
+                    {
+                      internalType: "bytes",
+                      name: "payload",
+                      type: "bytes",
+                    },
+                  ],
+                  internalType: "struct FvmAddress",
+                  name: "rawAddress",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct IPCAddress",
+              name: "from",
+              type: "tuple",
+            },
+            {
+              internalType: "uint64",
+              name: "nonce",
+              type: "uint64",
+            },
+            {
+              internalType: "uint256",
+              name: "value",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes",
+              name: "message",
+              type: "bytes",
+            },
+          ],
+          internalType: "struct IpcEnvelope",
+          name: "envelope",
+          type: "tuple",
         },
       ],
-      name: "transferOwnership",
-      outputs: [],
       stateMutability: "nonpayable",
       type: "function",
     },

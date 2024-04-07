@@ -1,5 +1,5 @@
 export const minerSlasher = {
-  address: "0x77633B82ae1b405FC95F82Accfa633C5f747302a",
+  address: "0x3f87989d9FAcEe469Bb4D51cf1c6A9cc844Fd15e",
   abi: [
     {
       inputs: [

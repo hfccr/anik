@@ -1,5 +1,5 @@
 export const delegationManager = {
-  address: "0x4A30D2e8c8c74fa6CEa9418e63a653e2A034cC50",
+  address: "0x3aBA6030358288b8C893F51348684ADC36DeC768",
   abi: [
     {
       inputs: [
@@ -210,6 +210,11 @@ export const delegationManager = {
               name: "minerId",
               type: "uint64",
             },
+            {
+              internalType: "address",
+              name: "subnetAddress",
+              type: "address",
+            },
           ],
           internalType: "struct DelegationManager.OperatorDetails[]",
           name: "",
@@ -250,6 +255,25 @@ export const delegationManager = {
           name: "operator",
           type: "address",
         },
+      ],
+      name: "getMinerId",
+      outputs: [
+        {
+          internalType: "uint64",
+          name: "",
+          type: "uint64",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "operator",
+          type: "address",
+        },
         {
           internalType: "contract IStrategy[]",
           name: "strategies",
@@ -262,6 +286,25 @@ export const delegationManager = {
           internalType: "uint256[]",
           name: "",
           type: "uint256[]",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
+    {
+      inputs: [
+        {
+          internalType: "address",
+          name: "operator",
+          type: "address",
+        },
+      ],
+      name: "getSubnetAddress",
+      outputs: [
+        {
+          internalType: "address",
+          name: "",
+          type: "address",
         },
       ],
       stateMutability: "view",
@@ -372,6 +415,11 @@ export const delegationManager = {
               name: "minerId",
               type: "uint64",
             },
+            {
+              internalType: "address",
+              name: "subnetAddress",
+              type: "address",
+            },
           ],
           internalType: "struct DelegationManager.OperatorDetails",
           name: "newOperatorDetails",
@@ -434,6 +482,11 @@ export const delegationManager = {
               internalType: "uint64",
               name: "minerId",
               type: "uint64",
+            },
+            {
+              internalType: "address",
+              name: "subnetAddress",
+              type: "address",
             },
           ],
           internalType: "struct DelegationManager.OperatorDetails",
@@ -543,6 +596,11 @@ export const delegationManager = {
               internalType: "uint64",
               name: "minerId",
               type: "uint64",
+            },
+            {
+              internalType: "address",
+              name: "subnetAddress",
+              type: "address",
             },
           ],
           internalType: "struct DelegationManager.OperatorDetails",

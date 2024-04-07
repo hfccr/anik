@@ -1,5 +1,5 @@
 export const strategyManager = {
-  address: "0x7eec5A199c332bC86497fdcACB8a7AdFEfaEE627",
+  address: "0x884C79f4e4419728B394251B9b6Ab2dcA3292B21",
   abi: [
     {
       inputs: [],

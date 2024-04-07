@@ -15,10 +15,13 @@ import { useState } from "react";
 import { useAccount, useReadContract } from "wagmi";
 import { RegisterOperatorButton } from "./RegisterOperatorButton";
 
+const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
+
 export const OperatorRegistration = () => {
   const [name, setName] = useState("");
   const [operatorType, setOperatorType] = useState(0);
   const [minerId, setMinerId] = useState(0);
+  const [subnetAddress, setSubnetAddress] = useState("");
   const { address } = useAccount();
   const {
     isError,
@@ -41,7 +44,11 @@ export const OperatorRegistration = () => {
   const onMinerIdChange = (event) => {
     setMinerId(event.target.value);
   };
+  const onSubnetAddressChange = (event) => {
+    setSubnetAddress(event.target.value);
+  };
   const useMinerId = operatorType === 1;
+  const useSubnetAddress = operatorType === 0;
   return (
     <Stack justifyContent="center" alignItems="center" sx={{ marginTop: 4 }}>
       <Container maxWidth="sm">
@@ -71,6 +78,15 @@ export const OperatorRegistration = () => {
                 type="number"
                 disabled
               />
+              {operatorDetails.operatorType === 0 &&
+                operatorDetails.subnetAddress && (
+                  <TextField
+                    label="Subnet ETH Address"
+                    name="subnetAddress"
+                    value={operatorDetails.subnetAddress.toString()}
+                    disabled
+                  />
+                )}
               {operatorDetails.minerId && (
                 <TextField
                   label="Miner ID"
@@ -107,6 +123,15 @@ export const OperatorRegistration = () => {
                 <MenuItem value={1}>Storage Provider</MenuItem>
                 <MenuItem value={3}>Retrieval Attestor</MenuItem>
               </TextField>
+              {useSubnetAddress && (
+                <TextField
+                  label="Subnet ETH Address"
+                  name="subnetAddress"
+                  value={subnetAddress}
+                  onChange={onSubnetAddressChange}
+                  required
+                />
+              )}
               {useMinerId && (
                 <TextField
                   label="Miner ID"
@@ -120,6 +145,7 @@ export const OperatorRegistration = () => {
                 name={name}
                 operatorType={operatorType}
                 minerId={useMinerId ? minerId : 0}
+                subnetAddress={useSubnetAddress ? subnetAddress : ZERO_ADDRESS}
               />
               <Alert severity="info">
                 An operator will be registered with your wallet address
