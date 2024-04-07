@@ -22,11 +22,8 @@ import {
 } from "@/util/ipcConstants";
 import { IpcSlashButton } from "@/components/IpcSlashButton";
 
-const subnetAddress = "0x124d199c8E11c11Da8b5D3DF05E24Cd473bF0802";
-
 export const Subnet = ({ operatorDetails }) => {
-  // TODO: use the subnet address from the operatorDetails
-  // const { subnetAddress } = operatorDetails;
+  const { subnetAddress } = operatorDetails;
   const contract = {
     address: subnetAddress,
     abi: subnetActorAbi,

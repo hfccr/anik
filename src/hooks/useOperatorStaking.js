@@ -37,13 +37,6 @@ export const useOperatorStaking = () => {
         let minerOperatorCount = 0;
         for (let i = 0; i < data.length; i++) {
           const { operatorAddress, operatorType } = data[i];
-          // TODO: Remove Subnet Mapping
-          if (
-            operatorAddress === "0x9f9b24Aa5b2c641845475249596d7f8712bD4263"
-          ) {
-            data[i].subnetAddress =
-              "0x124d199c8E11c11Da8b5D3DF05E24Cd473bF0802";
-          }
           const { subnetAddress } = data[i];
           const staking = await client.readContract({
             abi: delegationManager.abi,
