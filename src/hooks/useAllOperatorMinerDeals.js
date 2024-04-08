@@ -35,11 +35,10 @@ export const useAllOperatorMinerDeals = () => {
         let totalDeals = 0;
         const operatorDeals = {};
         for (let i = 0; i < minerOperators.length; i++) {
-          const { operatorAddress, operatorType, minerId } = data[i];
+          const { operatorAddress, operatorType, minerId } = minerOperators[i];
           // is miner type operator
-          const response = await fetch(
-            `${URI}?address=t0${minerId}&pageSize=${MAX_DEALS}&page=${1}`
-          );
+          const URL = `${URI}?address=t0${minerId.toString()}&pageSize=${MAX_DEALS}&page=${1}`;
+          const response = await fetch(URL);
           const { totalCount, deals } = await response.json();
           totalDeals += totalCount;
           operatorDeals[operatorAddress] = { totalCount, deals };
