@@ -4,9 +4,7 @@ import { delegationManager } from "@/util/delegationManager";
 import { strategies } from "@/util/strategies";
 import { isAddress } from "viem";
 
-const applicableStrategies = strategies.filter(
-  (strategy) => strategy.strategyAddress !== undefined
-);
+const applicableStrategies = strategies;
 const strategyAddresses = applicableStrategies.map(
   (strategies) => strategies.strategyAddress
 );
@@ -44,7 +42,10 @@ export const useOperatorStaking = () => {
             functionName: "getOperatorShares",
             args: [operatorAddress, strategyAddresses],
           });
-          if (isAddress(subnetAddress)) {
+          if (
+            isAddress(subnetAddress) &&
+            subnetAddress !== "0x0000000000000000000000000000000000000000"
+          ) {
             if (!Array.isArray(subnetDelegation[subnetAddress])) {
               subnetDelegation[subnetAddress] = applicableStrategies.map(
                 (strategy) => ({ strategy, delegatedShares: 0n })
