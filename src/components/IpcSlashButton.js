@@ -32,7 +32,6 @@ const Transition = forwardRef(function Transition(props, ref) {
 const proof = 12345;
 
 export const IpcSlashButton = ({ operatorDetails }) => {
-  const chainId = useChainId();
   const theme = useTheme();
   const imageSrc =
     theme.palette.mode === "dark"
@@ -51,27 +50,14 @@ export const IpcSlashButton = ({ operatorDetails }) => {
     setOpen((setOpen) => !setOpen);
   };
   const slashOperator = () => {
-    if (chainId === 1123184071217486) {
-      // slash from subnet
-      writeContract({
-        abi: ipcSlasherReplica.abi,
-        address: ipcSlasherReplica.address,
-        functionName: "linkedTransfer",
-        args: [operatorAddress, proof],
-      });
-      toast((t) => (
-        <Typography>Slashing IPC Operator From L2 Subnet</Typography>
-      ));
-    } else {
-      // slash from calibration
-      writeContract({
-        abi: ipcSlasherController.abi,
-        address: ipcSlasherController.address,
-        functionName: "slash",
-        args: [operatorAddress, proof],
-      });
-      toast((t) => <Typography>Slashing IPC Operator</Typography>);
-    }
+    // slash from calibration
+    writeContract({
+      abi: ipcSlasherController.abi,
+      address: ipcSlasherController.address,
+      functionName: "slash",
+      args: [operatorAddress, proof],
+    });
+    toast((t) => <Typography>Slashing IPC Operator</Typography>);
     handleClose();
   };
   return (
