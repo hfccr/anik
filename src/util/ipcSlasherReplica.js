@@ -1,5 +1,5 @@
 export const ipcSlasherReplica = {
-  address: "0x31C231AcCBa071d53253Afaf9c8d239254f64D17",
+  address: "0xBD238689f9311eC04Dd0c920ACE4800cE79D8d67",
   abi: [
     {
       inputs: [
