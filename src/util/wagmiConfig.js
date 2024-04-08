@@ -21,10 +21,9 @@ const ipc1 = {
 const config = createConfig({
   appName: "Anik",
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  chains: [filecoinCalibration, ipc1],
+  chains: [filecoinCalibration],
   transports: {
     [filecoinCalibration.id]: http(),
-    [ipc1.id]: http(),
   },
   ssr: true,
 });
