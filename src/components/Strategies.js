@@ -32,41 +32,43 @@ export const Strategies = () => {
       depositMap[address] = deposit[index];
     });
   }
-  const items = strategies.map((strategy) => {
-    const { key, title, ticker, logo, strategyAddress } = strategy;
-    const restaked = depositMap[strategyAddress] || 0;
-    const chipLabel = restaked > 0 ? `${restaked} Restaked` : "Not Restaked";
-    return (
-      <ListItem
-        key={key}
-        secondaryAction={
-          <>
-            {restaked > 0 && (
-              <Chip
-                label={chipLabel}
-                sx={{ position: "relative", right: 40 }}
+  const items = strategies
+    .filter((strategy) => strategy.key !== "stfil")
+    .map((strategy) => {
+      const { key, title, ticker, logo, strategyAddress } = strategy;
+      const restaked = depositMap[strategyAddress] || 0;
+      const chipLabel = restaked > 0 ? `${restaked} Restaked` : "Not Restaked";
+      return (
+        <ListItem
+          key={key}
+          secondaryAction={
+            <>
+              {restaked > 0 && (
+                <Chip
+                  label={chipLabel}
+                  sx={{ position: "relative", right: 40 }}
+                />
+              )}
+            </>
+          }
+        >
+          <Link href={`${pathname}/${key}`} style={{ width: "100%" }}>
+            <ListItemButton>
+              <ListItemIcon>
+                <Avatar sx={{ height: 36, width: 36 }}>
+                  <Image src={logo} width={36} height={36} alt={ticker} />
+                </Avatar>
+              </ListItemIcon>
+              <ListItemText
+                primary={title}
+                secondary={ticker}
+                primaryTypographyProps={{ variant: "h6" }}
+                secondaryTypographyProps={{ variant: "body1" }}
               />
-            )}
-          </>
-        }
-      >
-        <Link href={`${pathname}/${key}`} style={{ width: "100%" }}>
-          <ListItemButton>
-            <ListItemIcon>
-              <Avatar sx={{ height: 36, width: 36 }}>
-                <Image src={logo} width={36} height={36} alt={ticker} />
-              </Avatar>
-            </ListItemIcon>
-            <ListItemText
-              primary={title}
-              secondary={ticker}
-              primaryTypographyProps={{ variant: "h6" }}
-              secondaryTypographyProps={{ variant: "body1" }}
-            />
-          </ListItemButton>
-        </Link>
-      </ListItem>
-    );
-  });
+            </ListItemButton>
+          </Link>
+        </ListItem>
+      );
+    });
   return <List>{items}</List>;
 };
