@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export default function Restake() {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ paddingBottom: 4 }}>
       <Stack spacing={2}>
         <Breadcrumbs aria-label="breadcrumb">
           <Link href="/">Home</Link>
