@@ -27,7 +27,7 @@ export default function Next() {
         <Typography>
           The end goal is to connect Filecoin actors to native and ethereum
           restaking. Native restaking will enable fast paced development of
-          Filecoin native use cases which will then be bridged to Ethereum
+          Filecoin native use cases which will then be ported to Ethereum
           restaking ecosystem via AVS development.
         </Typography>
         <Stack justifyContent="center" alignItems="center">
