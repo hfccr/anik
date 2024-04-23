@@ -2,7 +2,6 @@ import React from "react";
 import { useAccount, useReadContract } from "wagmi";
 import {
   ROOT_GATEWAY_ADDRESS,
-  sortSubnets,
   formatSubnets,
   gatewayAbi,
 } from "../util/ipcConstants";
@@ -46,9 +45,37 @@ export const Subnets = ({}) => {
   });
   let formattedSubnets = [];
   let subnetList = [];
+  const sortIpcSubnets = (a, b) => {
+    const { subnetAddr: aAddr, genesis: aGenesis } = a;
+    const { subnetAddr: bAddr, genesis: bGenesis } = b;
+    const aDelegated = subnetDelegation[aAddr] || [];
+    const bDelegated = subnetDelegation[bAddr] || [];
+    const aDelegatedShares = aDelegated.reduce(
+      (acc, { delegatedShares }) => acc + delegatedShares,
+      0n
+    );
+    const bDelegatedShares = bDelegated.reduce(
+      (acc, { delegatedShares }) => acc + delegatedShares,
+      0n
+    );
+    if (aDelegatedShares > 0n && bDelegatedShares > 0n) {
+      return aDelegatedShares > bDelegatedShares ? -1 : 1;
+    } else if (aDelegatedShares > 0n && bDelegatedShares <= 0n) {
+      return -1;
+    } else if (aDelegatedShares <= 0n && bDelegatedShares > 0n) {
+      return 1;
+    } else {
+      if (aGenesis > bGenesis) {
+        return -1;
+      } else if (aGenesis < bGenesis) {
+        return 1;
+      }
+      return 0;
+    }
+  };
   if (isSuccess) {
-    formattedSubnets = sortSubnets(formatSubnets(data));
-    subnetList = formattedSubnets.map((subnet) => {
+    formattedSubnets = formatSubnets(data);
+    subnetList = formattedSubnets.sort(sortIpcSubnets).map((subnet) => {
       const { subnetId, genesis, collateral, circulatingSupply, subnetAddr } =
         subnet;
       const delegation = subnetDelegation[subnetAddr];
