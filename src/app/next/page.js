@@ -29,7 +29,8 @@ export default function Next() {
           restaking. Native restaking will enable fast paced development of
           Filecoin native use cases which will then be ported to Ethereum
           restaking ecosystem via AVS development which will unlock an
-          additional 15 Billion dollars of capital for the Filecoin ecosystem.
+          additional 15 Billion dollars of capital for securing the Filecoin
+          ecosystem.
         </Typography>
         <Stack justifyContent="center" alignItems="center">
           <Image src={imageSrc} height={700} width={800} alt="next" />
