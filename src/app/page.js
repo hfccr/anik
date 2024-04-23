@@ -102,7 +102,7 @@ export default function Home() {
               <Typography variant="h2">Storage Providers</Typography>
             </Stack>
             <Typography variant="h6">
-              Help manage Storage Provider capital by delegating LSTs for deal
+              Help manage Storage Provider capital by delegating LSTs for
               collaterals
             </Typography>
           </Stack>
