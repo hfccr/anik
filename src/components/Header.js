@@ -36,6 +36,10 @@ const pages = [
     title: "SPs",
     href: "/dapp/sps",
   },
+  {
+    title: "Next",
+    href: "/next",
+  },
 ];
 
 export default function Header() {
